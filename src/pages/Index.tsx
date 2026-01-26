@@ -9,10 +9,12 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import CTASection from "@/components/CTASection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import Background3D from "@/components/Background3D";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
+      <Background3D />
       <Navbar />
       <HeroSection />
       <AboutSection />

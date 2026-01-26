@@ -30,9 +30,9 @@ const ContactSection = () => {
   };
 
   const contactInfo = [
-    { icon: Phone, label: "اتصل بنا", value: "+966 55 123 4567" },
-    { icon: Mail, label: "راسلنا", value: "hello@4creative.sa" },
-    { icon: MapPin, label: "موقعنا", value: "الرياض، المملكة العربية السعودية" },
+    { icon: Phone, label: "اتصل بنا", value: "+20 10 123 4567" },
+    { icon: Mail, label: "راسلنا", value: "hello@4creative.com" },
+    { icon: MapPin, label: "موقعنا", value: "القاهرة، مصر" },
   ];
 
   const socialLinks = [
@@ -102,7 +102,7 @@ const ContactSection = () => {
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl bg-secondary/50 border border-border focus:border-primary focus:outline-none transition-colors"
-                    placeholder="+966 5X XXX XXXX"
+                    placeholder="+20 1X XXX XXXX"
                   />
                 </div>
                 <div>
@@ -156,7 +156,7 @@ const ContactSection = () => {
           >
             {/* WhatsApp Button */}
             <motion.a
-              href="https://wa.me/966551234567"
+              href="https://wa.me/201012345678"
               target="_blank"
               rel="noopener noreferrer"
               className="glass-card p-6 flex items-center gap-4 group cursor-pointer"

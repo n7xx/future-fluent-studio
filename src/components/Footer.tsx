@@ -81,7 +81,7 @@ const Footer = () => {
             © {currentYear} 4 Creative. جميع الحقوق محفوظة.
           </p>
           <p className="text-muted-foreground text-sm">
-            صُنع بـ ❤️ في المملكة العربية السعودية
+            صُنع بـ ❤️ بواسطة فريق 4 Creative
           </p>
         </div>
       </div>
