@@ -13,36 +13,42 @@ import {
 
 const services = [
   {
+    id: "web-development",
     icon: Globe,
     title: "تطوير المواقع",
     description: "مواقع إلكترونية احترافية ومتجاوبة تعكس هوية علامتك التجارية بأحدث التقنيات",
     features: ["تصميم متجاوب", "تجربة مستخدم متميزة", "سرعة عالية"],
   },
   {
+    id: "digital-marketing",
     icon: TrendingUp,
     title: "التسويق الرقمي",
     description: "استراتيجيات تسويقية متكاملة لزيادة الوصول والمبيعات عبر القنوات الرقمية",
     features: ["إعلانات مدفوعة", "تحسين محركات البحث", "تحليل البيانات"],
   },
   {
+    id: "content-creation",
     icon: PenTool,
     title: "صناعة المحتوى",
     description: "محتوى إبداعي ومؤثر يروي قصة علامتك التجارية ويجذب جمهورك المستهدف",
     features: ["كتابة إبداعية", "تصوير احترافي", "إدارة المحتوى"],
   },
   {
+    id: "video-motion",
     icon: Video,
     title: "المونتاج والموشن",
     description: "فيديوهات احترافية ورسوم متحركة تجذب الانتباه وتوصل رسالتك بفعالية",
     features: ["مونتاج احترافي", "موشن جرافيك", "مؤثرات بصرية"],
   },
   {
+    id: "design-branding",
     icon: Palette,
     title: "التصميم والهوية",
     description: "هوية بصرية متكاملة وتصميمات مبتكرة تميز علامتك التجارية",
     features: ["تصميم الهوية", "تصميم الجرافيك", "التغليف"],
   },
   {
+    id: "digital-strategy",
     icon: Lightbulb,
     title: "الاستراتيجية الرقمية",
     description: "خطط استراتيجية شاملة للتحول الرقمي وتحقيق أهداف عملك",
@@ -124,10 +130,13 @@ const ServicesSection = () => {
               </div>
 
               {/* Arrow */}
-              <div className="flex items-center gap-2 text-primary font-medium opacity-0 group-hover:opacity-100 transform translate-x-4 group-hover:translate-x-0 transition-all duration-300">
+              <a 
+                href={`/services/${service.id}`}
+                className="flex items-center gap-2 text-primary font-medium opacity-0 group-hover:opacity-100 transform translate-x-4 group-hover:translate-x-0 transition-all duration-300"
+              >
                 <ArrowUpLeft className="w-5 h-5" />
                 <span>اكتشف المزيد</span>
-              </div>
+              </a>
             </motion.div>
           ))}
         </div>
