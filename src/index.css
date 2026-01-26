@@ -163,7 +163,7 @@
 
   /* Service card */
   .service-card {
-    @apply glass-card p-8 relative overflow-hidden group cursor-pointer;
+    @apply glass-card p-8 relative overflow-hidden cursor-pointer;
   }
 
   .service-card::before {
