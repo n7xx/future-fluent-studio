@@ -1,3 +1,4 @@
+import { memo } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
@@ -13,10 +14,12 @@ import Footer from "@/components/Footer";
 import Background3D from "@/components/Background3D";
 import ParallaxWrapper from "@/components/ParallaxWrapper";
 
+const MemoizedBackground = memo(Background3D);
+
 const Index = () => {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
-      <Background3D />
+      <MemoizedBackground />
       <Navbar />
       <HeroSection />
       <ParallaxWrapper offset={30}>

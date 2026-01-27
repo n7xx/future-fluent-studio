@@ -1,6 +1,6 @@
+import { memo, useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { 
   ArrowRight, 
   Rocket, 
@@ -20,6 +20,8 @@ import { useToast } from "@/hooks/use-toast";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Background3D from "@/components/Background3D";
+
+const MemoizedBackground = memo(Background3D);
 
 const benefits = [
   {
@@ -87,7 +89,7 @@ const StartProjectPage = () => {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
-      <Background3D />
+      <MemoizedBackground />
       <Navbar />
 
       {/* Hero Section */}
