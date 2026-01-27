@@ -11,6 +11,7 @@ import StartProjectPage from "./pages/StartProjectPage";
 import PortfolioPage from "./pages/PortfolioPage";
 import ServicesPage from "./pages/ServicesPage";
 import LoadingAnimation from "./components/LoadingAnimation";
+import CustomCursor from "./components/CustomCursor";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        <CustomCursor />
         {isLoading && <LoadingAnimation onComplete={() => setIsLoading(false)} />}
         <Toaster />
         <Sonner />
