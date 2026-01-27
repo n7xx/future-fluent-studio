@@ -85,9 +85,11 @@ function FloatingRings() {
   );
 }
 
-const Background3D = () => {
+import { forwardRef } from "react";
+
+const Background3D = forwardRef<HTMLDivElement>((_, ref) => {
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none">
+    <div ref={ref} className="fixed inset-0 z-0 pointer-events-none">
       <Canvas
         camera={{ position: [0, 0, 5], fov: 75 }}
         style={{ background: "transparent" }}
@@ -100,6 +102,8 @@ const Background3D = () => {
       </Canvas>
     </div>
   );
-};
+});
+
+Background3D.displayName = "Background3D";
 
 export default Background3D;

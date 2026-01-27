@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { ArrowRight, ArrowUpLeft } from "lucide-react";
@@ -12,6 +13,8 @@ import {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Background3D from "@/components/Background3D";
+
+const MemoizedBackground = memo(Background3D);
 
 const services = [
   {
@@ -69,7 +72,7 @@ const ServicesPage = () => {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
-      <Background3D />
+      <MemoizedBackground />
       <Navbar />
 
       {/* Hero Section */}

@@ -1,12 +1,14 @@
+import { memo, useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { ArrowRight, Calendar, Clock, User, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Background3D from "@/components/Background3D";
 import { blogPosts } from "@/data/blogPosts";
+
+const MemoizedBackground = memo(Background3D);
 
 const categories = ["الكل", "Digital Marketing", "Branding", "Social Media", "Web Development", "Content Marketing", "Paid Advertising"];
 
@@ -53,7 +55,7 @@ const BlogPage = () => {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
-      <Background3D />
+      <MemoizedBackground />
       <Navbar />
 
       {/* JSON-LD Schema */}

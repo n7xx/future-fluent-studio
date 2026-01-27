@@ -1,11 +1,13 @@
+import { memo, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle, ArrowUpLeft } from "lucide-react";
 import { getServiceById, services } from "@/data/services";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Background3D from "@/components/Background3D";
+
+const MemoizedBackground = memo(Background3D);
 
 const ServicePage = () => {
   const { serviceId } = useParams<{ serviceId: string }>();
@@ -42,7 +44,7 @@ const ServicePage = () => {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
-      <Background3D />
+      <MemoizedBackground />
       <Navbar />
       
       {/* Hero Section */}
