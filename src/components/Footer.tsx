@@ -41,9 +41,9 @@ const Footer = () => {
   };
 
   return (
-    <footer className="py-16 relative overflow-hidden border-t border-border/30">
+    <footer className="py-16 relative overflow-hidden border-t border-border/30" role="contentinfo" aria-label="تذييل الصفحة">
       {/* Background */}
-      <div className="absolute inset-0 bg-grid opacity-20" />
+      <div className="absolute inset-0 bg-grid opacity-20" aria-hidden="true" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
@@ -51,10 +51,13 @@ const Footer = () => {
           <div className="md:col-span-2">
             <motion.img
               src={logo}
-              alt="4Creative"
+              alt="4Creative - Digital Marketing Agency"
               className="h-16 w-auto mb-6 cursor-pointer"
               whileHover={{ scale: 1.05 }}
               onClick={() => navigate("/")}
+              width={64}
+              height={64}
+              loading="lazy"
             />
             <p className="text-muted-foreground leading-relaxed mb-6 max-w-md">
               4Creative هي Full-Service Digital Agency في مصر. بنبني Brands تفضل في دماغ الناس 
@@ -63,38 +66,39 @@ const Footer = () => {
           </div>
 
           {/* Services Links */}
-          <div>
+          <nav aria-label="روابط الخدمات">
             <h4 className="font-bold text-lg mb-4">خدماتنا</h4>
             <ul className="space-y-3">
               {links.services.map((link, index) => (
                 <li key={index}>
                   <button
                     onClick={() => handleNavClick(link.href)}
-                    className="text-muted-foreground hover:text-primary transition-colors"
+                    className="text-muted-foreground hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded-md px-1"
+                    aria-label={`خدمة ${link.label}`}
                   >
                     {link.label}
                   </button>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
           {/* Company Links */}
-          <div>
+          <nav aria-label="روابط مهمة">
             <h4 className="font-bold text-lg mb-4">روابط مهمة</h4>
             <ul className="space-y-3">
               {links.company.map((link, index) => (
                 <li key={index}>
                   <button
                     onClick={() => handleNavClick(link.href)}
-                    className="text-muted-foreground hover:text-primary transition-colors"
+                    className="text-muted-foreground hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded-md px-1"
                   >
                     {link.label}
                   </button>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
         </div>
 
         {/* Bottom Bar */}
@@ -103,7 +107,7 @@ const Footer = () => {
             © {currentYear} 4Creative. كل الحقوق محفوظة.
           </p>
           <p className="text-muted-foreground text-sm">
-            صُنع بـ ❤️ بواسطة فريق 4Creative
+            صُنع بـ <span aria-label="حب">❤️</span> بواسطة فريق 4Creative
           </p>
         </div>
       </div>
