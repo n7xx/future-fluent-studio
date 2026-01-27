@@ -8,15 +8,16 @@ const Footer = () => {
 
   const links = {
     services: [
-      { label: "تطوير المواقع", href: "/services/web-development" },
-      { label: "التسويق الرقمي", href: "/services/digital-marketing" },
-      { label: "صناعة المحتوى", href: "/services/content-creation" },
-      { label: "التصميم والهوية", href: "/services/design-branding" },
+      { label: "Website Development", href: "/services/web-development" },
+      { label: "Digital Marketing", href: "/services/digital-marketing" },
+      { label: "Content Creation", href: "/services/content-creation" },
+      { label: "Branding & Design", href: "/services/design-branding" },
     ],
     company: [
       { label: "من نحن", href: "/#about" },
       { label: "أعمالنا", href: "/portfolio" },
       { label: "خدماتنا", href: "/services" },
+      { label: "المدونة", href: "/blog" },
       { label: "ابدأ مشروعك", href: "/start-project" },
     ],
   };
@@ -56,8 +57,8 @@ const Footer = () => {
               onClick={() => navigate("/")}
             />
             <p className="text-muted-foreground leading-relaxed mb-6 max-w-md">
-              إحنا وكالة رقمية متكاملة بنجمع بين الإبداع والتكنولوجيا علشان نحول
-              أفكارك لحلول رقمية استثنائية تميزك في السوق.
+              4Creative هي Full-Service Digital Agency في مصر. بنبني Brands تفضل في دماغ الناس 
+              من خلال Website Development، Digital Marketing، Branding، وContent Creation.
             </p>
           </div>
 

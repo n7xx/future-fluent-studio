@@ -10,6 +10,8 @@ import ServicePage from "./pages/ServicePage";
 import StartProjectPage from "./pages/StartProjectPage";
 import PortfolioPage from "./pages/PortfolioPage";
 import ServicesPage from "./pages/ServicesPage";
+import BlogPage from "./pages/BlogPage";
+import BlogPostPage from "./pages/BlogPostPage";
 import LoadingAnimation from "./components/LoadingAnimation";
 import CustomCursor from "./components/CustomCursor";
 
@@ -32,6 +34,8 @@ const App = () => {
             <Route path="/portfolio" element={<PortfolioPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/services/:serviceId" element={<ServicePage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:postId" element={<BlogPostPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

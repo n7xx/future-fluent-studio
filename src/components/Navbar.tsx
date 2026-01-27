@@ -64,7 +64,7 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             onClick={() => navigate("/")}
           >
-            <img src={logo} alt="4Creative - Digital Marketing Agency" className="h-16 w-auto" />
+            <img src={logo} alt="4Creative - Digital Marketing Agency" className="h-20 w-auto" />
           </motion.div>
 
           {/* Desktop Navigation */}
