@@ -6,10 +6,12 @@ import PortfolioSection from "@/components/PortfolioSection";
 import ProcessSection from "@/components/ProcessSection";
 import WhyUsSection from "@/components/WhyUsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import Background3D from "@/components/Background3D";
+import ParallaxWrapper from "@/components/ParallaxWrapper";
 
 const Index = () => {
   return (
@@ -17,12 +19,21 @@ const Index = () => {
       <Background3D />
       <Navbar />
       <HeroSection />
-      <AboutSection />
+      <ParallaxWrapper offset={30}>
+        <AboutSection />
+      </ParallaxWrapper>
       <ServicesSection />
-      <PortfolioSection />
+      <ParallaxWrapper offset={40}>
+        <PortfolioSection />
+      </ParallaxWrapper>
       <ProcessSection />
-      <WhyUsSection />
+      <ParallaxWrapper offset={25}>
+        <WhyUsSection />
+      </ParallaxWrapper>
       <TestimonialsSection />
+      <ParallaxWrapper offset={35}>
+        <FAQSection />
+      </ParallaxWrapper>
       <CTASection />
       <ContactSection />
       <Footer />
