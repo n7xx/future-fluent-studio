@@ -9,6 +9,7 @@ const navItems = [
   { label: "من نحن", href: "/#about", isPage: false },
   { label: "خدماتنا", href: "/services", isPage: true },
   { label: "أعمالنا", href: "/portfolio", isPage: true },
+  { label: "المدونة", href: "/blog", isPage: true },
   { label: "منهجيتنا", href: "/#process", isPage: false },
   { label: "تواصل معنا", href: "/#contact", isPage: false },
 ];
