@@ -24,31 +24,31 @@ import Background3D from "@/components/Background3D";
 const benefits = [
   {
     icon: Star,
-    title: "جودة عالية",
-    description: "نلتزم بأعلى معايير الجودة في كل مشروع"
+    title: "High Quality",
+    description: "4Creative بتشتغل بأعلى Standards في كل مشروع"
   },
   {
     icon: Users,
-    title: "فريق متخصص",
-    description: "خبراء في كل مجال يعملون على مشروعك"
+    title: "Expert Team",
+    description: "فريق متخصص في كل مجال - من Design للDevelopment"
   },
   {
     icon: Award,
-    title: "نتائج مضمونة",
-    description: "سجل حافل بالنجاحات مع عملائنا"
+    title: "Proven Results",
+    description: "سجل حافل بالنجاحات مع Brands كبيرة ومتوسطة"
   },
   {
     icon: Clock,
-    title: "التزام بالمواعيد",
-    description: "نسلم مشاريعنا في الوقت المحدد"
+    title: "On-Time Delivery",
+    description: "بنسلم في الـ Deadline المتفق عليه بدون تأخير"
   }
 ];
 
 const trustSignals = [
   { number: "+150", label: "مشروع ناجح" },
-  { number: "+50", label: "عميل سعيد" },
-  { number: "+5", label: "سنين خبرة" },
-  { number: "100%", label: "رضا العملاء" }
+  { number: "+50", label: "Brand اتحول" },
+  { number: "+5", label: "سنين Experience" },
+  { number: "100%", label: "Client Satisfaction" }
 ];
 
 const StartProjectPage = () => {
@@ -113,18 +113,18 @@ const StartProjectPage = () => {
             >
               <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6">
                 <Rocket className="w-5 h-5 text-primary" />
-                <span className="text-sm font-medium">جاهز تبدأ؟</span>
+                <span className="text-sm font-medium">Start Your Project مع 4Creative</span>
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6">
-                <span className="block">خلينا نحول</span>
-                <span className="block gradient-text">فكرتك لواقع</span>
+                <span className="block">خلي البراند بتاعك</span>
+                <span className="block gradient-text">يوصل للناس الصح</span>
               </h1>
 
               <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-                إحنا هنا علشان نساعدك تبني حضور رقمي قوي. 
-                سواء كنت بتبدأ من الصفر أو عايز تطور اللي عندك، 
-                فريقنا جاهز يشتغل معاك خطوة بخطوة.
+                سواء محتاج Website، Digital Marketing، أو Branding كامل - 
+                فريق 4Creative هنا عشان يبني معاك حضور رقمي قوي 
+                ويحقق لك Results حقيقية مش مجرد Likes.
               </p>
 
               {/* Benefits Grid */}
@@ -172,7 +172,7 @@ const StartProjectPage = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h2 className="text-2xl font-bold mb-6">ابدأ مشروعك دلوقتي</h2>
+              <h2 className="text-2xl font-bold mb-6">ابدأ مشروعك مع 4Creative</h2>
               
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
@@ -215,12 +215,12 @@ const StartProjectPage = () => {
                   required
                 >
                   <option value="">اختار الخدمة</option>
-                  <option value="web">تطوير المواقع</option>
-                  <option value="marketing">التسويق الرقمي</option>
-                  <option value="content">صناعة المحتوى</option>
-                  <option value="video">المونتاج والموشن</option>
-                  <option value="design">التصميم والهوية</option>
-                  <option value="strategy">الاستراتيجية الرقمية</option>
+                  <option value="web">Website Development</option>
+                  <option value="marketing">Digital Marketing</option>
+                  <option value="content">Content Creation</option>
+                  <option value="video">Video Production</option>
+                  <option value="design">Branding & Design</option>
+                  <option value="strategy">Digital Strategy</option>
                 </select>
 
                 <select
@@ -286,9 +286,9 @@ const StartProjectPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold mb-4">ليه تشتغل معانا؟</h2>
+            <h2 className="text-3xl font-bold mb-4">ليه تشتغل مع 4Creative؟</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              مش بس بنعمل شغل حلو، إحنا بنبني شراكات ناجحة مع عملائنا
+              مش بس بنعمل شغل Creative - إحنا بنبني Partnerships حقيقية مع الـ Brands اللي بنشتغل معاها
             </p>
           </motion.div>
 
@@ -297,17 +297,17 @@ const StartProjectPage = () => {
               {
                 icon: CheckCircle2,
                 title: "فاهمين السوق المصري",
-                description: "عندنا خبرة كبيرة في السوق المحلي وفاهمين احتياجات العملاء المصريين"
+                description: "4Creative عندها Experience كبيرة في الـ Local Market وفاهمين الـ Consumer Behavior في مصر"
               },
               {
                 icon: CheckCircle2,
-                title: "فريق متكامل",
-                description: "كل حاجة تحت سقف واحد - من التصميم للتطوير للتسويق"
+                title: "Full-Service Agency",
+                description: "كل حاجة تحت سقف واحد - من الـ Design للـ Development للـ Marketing"
               },
               {
                 icon: CheckCircle2,
-                title: "نتائج ملموسة",
-                description: "مش بس شغل حلو، إحنا بنركز على النتائج اللي تفرق معاك"
+                title: "Results-Driven",
+                description: "مش بس شغل حلو، إحنا بنركز على الـ Results اللي تفرق معاك - Leads، Sales، وGrowth"
               }
             ].map((item, index) => (
               <motion.div

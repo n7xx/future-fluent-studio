@@ -49,13 +49,13 @@ const CTASection = () => {
             </div>
 
             <h2 className="text-4xl md:text-5xl font-black mb-6">
-              جاهز تنقل مشروعك
-              <span className="block gradient-text mt-2">للمستوى التالي؟</span>
+              جاهز تكبر البراند
+              <span className="block gradient-text mt-2">مع 4Creative؟</span>
             </h2>
 
             <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-              دعنا نحول رؤيتك إلى واقع رقمي مذهل. تواصل معنا اليوم وابدأ رحلة
-              النجاح مع فريق 4Creative
+              سواء محتاج Website، Digital Marketing، أو Branding كامل - فريق 4Creative 
+              جاهز يحول رؤيتك لواقع. احجز مكالمة مع فريقنا النهاردة!
             </p>
 
             <motion.a
@@ -64,7 +64,7 @@ const CTASection = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span>تواصل معنا الآن</span>
+              <span>ابدأ مشروعك مع 4Creative</span>
               <ArrowUpLeft className="w-6 h-6" />
             </motion.a>
           </motion.div>

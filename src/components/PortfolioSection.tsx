@@ -4,48 +4,48 @@ import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ExternalLink, Eye } from "lucide-react";
 
-const categories = ["الكل", "مواقع إلكترونية", "حملات تسويقية", "فيديوهات", "تصميمات"];
+const categories = ["الكل", "Website Development", "Marketing Campaigns", "Video Production", "Branding"];
 
 const projects = [
   {
-    title: "متجر أزياء راقية",
-    category: "مواقع إلكترونية",
-    description: "متجر إلكتروني متكامل مع تجربة تسوق سلسة",
+    title: "Fashion E-commerce Platform",
+    category: "Website Development",
+    description: "4Creative بنت E-commerce متكامل بـ Smooth UX وConversion-Optimized Design",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
     color: "from-purple-500/20 to-pink-500/20",
   },
   {
-    title: "حملة إطلاق منتج",
-    category: "حملات تسويقية",
-    description: "حملة رقمية متكاملة لإطلاق منتج جديد",
+    title: "Product Launch Campaign",
+    category: "Marketing Campaigns",
+    description: "Integrated Digital Campaign حققت 300% ROI",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
     color: "from-blue-500/20 to-cyan-500/20",
   },
   {
-    title: "فيديو موشن جرافيك",
-    category: "فيديوهات",
-    description: "فيديو ترويجي بتقنية الموشن جرافيك",
+    title: "Motion Graphics Video",
+    category: "Video Production",
+    description: "Explainer Video بـ Creative Style حقق 1M+ Views",
     image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&h=600&fit=crop",
     color: "from-orange-500/20 to-red-500/20",
   },
   {
-    title: "هوية مطعم فاخر",
-    category: "تصميمات",
-    description: "تصميم هوية بصرية متكاملة لمطعم راقي",
+    title: "Restaurant Brand Identity",
+    category: "Branding",
+    description: "Complete Visual Identity Design بتعكس الـ Premium Feel",
     image: "https://images.unsplash.com/photo-1634942537034-2531766767d1?w=800&h=600&fit=crop",
     color: "from-green-500/20 to-emerald-500/20",
   },
   {
-    title: "منصة تعليمية",
-    category: "مواقع إلكترونية",
-    description: "منصة تعليمية تفاعلية مع نظام إدارة محتوى",
+    title: "Educational Platform",
+    category: "Website Development",
+    description: "E-learning Platform متكاملة بـ 10K+ Active Users",
     image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop",
     color: "from-violet-500/20 to-purple-500/20",
   },
   {
-    title: "حملة رمضان",
-    category: "حملات تسويقية",
-    description: "حملة موسمية ناجحة بنتائج استثنائية",
+    title: "Ramadan Marketing Campaign",
+    category: "Marketing Campaigns",
+    description: "Seasonal Campaign حققت أعلى Sales في تاريخ الـ Brand",
     image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop",
     color: "from-amber-500/20 to-yellow-500/20",
   },
@@ -72,14 +72,14 @@ const PortfolioSection = () => {
           transition={{ duration: 0.8 }}
         >
           <span className="inline-block text-primary font-bold text-lg mb-4">
-            أعمالنا
+            4Creative Portfolio
           </span>
           <h2 className="section-title">
-            مشاريع نفتخر
-            <span className="block gradient-text">بتنفيذها</span>
+            Success Stories
+            <span className="block gradient-text">من شغل 4Creative</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            نماذج من أعمالنا التي تعكس جودة وإبداع فريقنا
+            Projects بتعكس الـ Quality والـ Creativity بتاع فريق 4Creative
           </p>
         </motion.div>
 
@@ -185,7 +185,7 @@ const PortfolioSection = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            عرض جميع الأعمال
+            شوف كل أعمال 4Creative
           </motion.button>
         </motion.div>
       </div>

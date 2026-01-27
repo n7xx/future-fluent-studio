@@ -6,23 +6,23 @@ import { Target, Eye, Zap, Users } from "lucide-react";
 const features = [
   {
     icon: Target,
-    title: "رؤيتنا",
-    description: "أن نكون الوكالة الرقمية الرائدة في تحويل الأفكار إلى تجارب رقمية استثنائية",
+    title: "رؤية 4Creative",
+    description: "نبني Creative Agency تبقى Reference في السوق المصري للـ Digital Marketing والـ Branding",
   },
   {
     icon: Eye,
     title: "مهمتنا",
-    description: "نساعد الشركات على النمو من خلال حلول رقمية مبتكرة ومتكاملة",
+    description: "نحول البراندات من مجرد اسم لـ Brand يفضل في دماغ الناس ويحقق Sales",
   },
   {
     icon: Zap,
-    title: "قيمنا",
-    description: "الإبداع، الجودة، الالتزام، والشراكة الحقيقية مع عملائنا",
+    title: "Performance First",
+    description: "مش بنعمل حاجات حلوة وبس - إحنا بنشتغل على Results قابلة للقياس",
   },
   {
     icon: Users,
-    title: "فريقنا",
-    description: "خبراء متخصصون في التصميم، التطوير، والتسويق الرقمي",
+    title: "فريق 4Creative",
+    description: "Designers، Developers، Marketers، وContent Creators تحت سقف واحد",
   },
 ];
 
@@ -49,24 +49,24 @@ const AboutSection = () => {
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.2 }}
             >
-              من نحن
+              مين 4Creative؟
             </motion.span>
             
             <h2 className="section-title">
-              نصنع المستقبل
-              <span className="block gradient-text">بأفكار إبداعية</span>
+              Creative Agency
+              <span className="block gradient-text">بتفهم السوق المصري</span>
             </h2>
             
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              نحن وكالة رقمية متكاملة نجمع بين الإبداع والتكنولوجيا لتقديم حلول
-              رقمية استثنائية. نؤمن بأن كل مشروع فريد ويستحق اهتماماً خاصاً،
-              ولذلك نعمل بشكل وثيق مع عملائنا لفهم احتياجاتهم وتحويل رؤيتهم إلى واقع.
+              أغلب البراندات بتصرف على Marketing ومفيش نتيجة... المشكلة مش في الإعلانات، 
+              المشكلة في الـ Strategy! إحنا في 4Creative بنبني لك Digital Marketing System 
+              كامل مش حملات مؤقتة. ده اللي بيخلي النتيجة تكبر مع الوقت.
             </p>
             
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              فريقنا يضم مصممين ومطورين ومسوقين محترفين يعملون بتناغم لتحقيق
-              نتائج تفوق التوقعات. نستخدم أحدث التقنيات والأدوات لضمان جودة
-              عالية وأداء متميز.
+              من Website Development لـ Social Media Management لـ Video Production 
+              لـ Branding - كل حاجة تحت سقف واحد. فريق 4Creative فاهم السوق المصري 
+              وبيتكلم لغة الناس.
             </p>
 
             <motion.a
@@ -75,7 +75,7 @@ const AboutSection = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              اكتشف خدماتنا
+              اكتشف خدمات 4Creative
             </motion.a>
           </motion.div>
 

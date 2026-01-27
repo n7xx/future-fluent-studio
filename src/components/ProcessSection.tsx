@@ -7,32 +7,32 @@ const steps = [
   {
     icon: Search,
     number: "01",
-    title: "الفهم والتحليل",
-    description: "نبدأ بفهم عميق لمشروعك وأهدافك وجمهورك المستهدف من خلال جلسات استكشافية",
+    title: "Discovery & Research",
+    description: "بنبدأ نفهم البراند بتاعك، الـ Target Audience، والـ Competition. كل حاجة بالـ Data",
   },
   {
     icon: Map,
     number: "02",
-    title: "التخطيط الاستراتيجي",
-    description: "نضع خطة عمل واضحة ومحددة بالمراحل والمخرجات والجداول الزمنية",
+    title: "Strategy & Planning",
+    description: "بنحط خطة شغل واضحة مع Milestones وDeadlines محددة. عشان تعرف إيه اللي هيحصل",
   },
   {
     icon: Rocket,
     number: "03",
-    title: "التنفيذ الإبداعي",
-    description: "نحول الأفكار إلى واقع من خلال التصميم والتطوير والإنتاج بأعلى معايير الجودة",
+    title: "Creative Execution",
+    description: "فريق 4Creative بيشتغل على التنفيذ - Design، Development، Content - بأعلى Quality",
   },
   {
     icon: CheckCircle,
     number: "04",
-    title: "الإطلاق",
-    description: "نطلق المشروع بعد اختبارات شاملة ونتأكد من أداءه المثالي",
+    title: "Launch & Delivery",
+    description: "بنعمل Testing شامل وبعدين Launch. بنتأكد إن كل حاجة شغالة زي الفل",
   },
   {
     icon: TrendingUp,
     number: "05",
-    title: "التحسين المستمر",
-    description: "نتابع الأداء ونقدم تحسينات مستمرة لضمان تحقيق أفضل النتائج",
+    title: "Optimization & Growth",
+    description: "الشغل مبيخلصش عند الـ Launch. بنتابع الـ Performance ونعمل Optimization مستمر",
   },
 ];
 
@@ -54,14 +54,14 @@ const ProcessSection = () => {
           transition={{ duration: 0.8 }}
         >
           <span className="inline-block text-primary font-bold text-lg mb-4">
-            منهجيتنا
+            طريقة شغل 4Creative
           </span>
           <h2 className="section-title">
-            كيف نعمل
-            <span className="block gradient-text">معاً نحو النجاح</span>
+            Our Process
+            <span className="block gradient-text">من الفكرة للنتيجة</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            خمس خطوات مدروسة نتبعها لضمان تحقيق أفضل النتائج لمشروعك
+            5 خطوات واضحة بنمشي فيها مع كل Client عشان نضمن أفضل Results
           </p>
         </motion.div>
 

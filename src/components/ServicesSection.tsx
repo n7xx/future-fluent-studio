@@ -16,44 +16,44 @@ const services = [
   {
     id: "web-development",
     icon: Globe,
-    title: "تطوير المواقع",
-    description: "مواقع إلكترونية احترافية ومتجاوبة تعكس هوية علامتك التجارية بأحدث التقنيات",
-    features: ["تصميم متجاوب", "تجربة مستخدم متميزة", "سرعة عالية"],
+    title: "Website Development",
+    description: "4Creative بتبني لك Website يبيع مش مجرد شكل حلو. مواقع سريعة، متجاوبة، ومحسّنة للـ SEO",
+    features: ["Responsive Design", "UX متميز", "SEO Ready"],
   },
   {
     id: "digital-marketing",
     icon: TrendingUp,
-    title: "التسويق الرقمي",
-    description: "استراتيجيات تسويقية متكاملة لزيادة الوصول والمبيعات عبر القنوات الرقمية",
-    features: ["إعلانات مدفوعة", "تحسين محركات البحث", "تحليل البيانات"],
+    title: "Digital Marketing",
+    description: "Performance Marketing مش بوستات وخلاص! Paid Ads، SEO، وSocial Media Management بنتائج ملموسة",
+    features: ["Meta & Google Ads", "SEO", "Analytics"],
   },
   {
     id: "content-creation",
     icon: PenTool,
-    title: "صناعة المحتوى",
-    description: "محتوى إبداعي ومؤثر يروي قصة علامتك التجارية ويجذب جمهورك المستهدف",
-    features: ["كتابة إبداعية", "تصوير احترافي", "إدارة المحتوى"],
+    title: "Content Creation",
+    description: "Content يتكلم بلغة جمهورك ويحقق Engagement حقيقي. تصوير، كتابة، وإدارة محتوى",
+    features: ["Copywriting", "Photography", "Content Strategy"],
   },
   {
     id: "video-motion",
     icon: Video,
-    title: "المونتاج والموشن",
-    description: "فيديوهات احترافية ورسوم متحركة تجذب الانتباه وتوصل رسالتك بفعالية",
-    features: ["مونتاج احترافي", "موشن جرافيك", "مؤثرات بصرية"],
+    title: "Video Production",
+    description: "4Creative بتنتج فيديوهات تجذب الانتباه وتحقق Views. Reels، Motion Graphics، وAds",
+    features: ["Video Editing", "Motion Graphics", "Ads Production"],
   },
   {
     id: "design-branding",
     icon: Palette,
-    title: "التصميم والهوية",
-    description: "هوية بصرية متكاملة وتصميمات مبتكرة تميز علامتك التجارية",
-    features: ["تصميم الهوية", "تصميم الجرافيك", "التغليف"],
+    title: "Branding & Design",
+    description: "Branding يخلي الناس تفتكرك بسهولة. هوية بصرية متكاملة تميزك عن المنافسين",
+    features: ["Logo Design", "Brand Identity", "Packaging"],
   },
   {
     id: "digital-strategy",
     icon: Lightbulb,
-    title: "الاستراتيجية الرقمية",
-    description: "خطط استراتيجية شاملة للتحول الرقمي وتحقيق أهداف عملك",
-    features: ["تحليل السوق", "خطة النمو", "استشارات رقمية"],
+    title: "Digital Strategy",
+    description: "خطة Growth شاملة للتحول الرقمي. بنحلل السوق ونحط Strategy تحقق أهدافك",
+    features: ["Market Analysis", "Growth Plan", "Consulting"],
   },
 ];
 
@@ -79,14 +79,14 @@ const ServicesSection = () => {
           transition={{ duration: 0.8 }}
         >
           <span className="inline-block text-primary font-bold text-lg mb-4">
-            خدماتنا
+            خدمات 4Creative
           </span>
           <h2 className="section-title">
-            حلول رقمية
-            <span className="block gradient-text">متكاملة ومبتكرة</span>
+            Full-Service
+            <span className="block gradient-text">Digital Agency</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            بنقدم مجموعة شاملة من الخدمات الرقمية علشان نلبي كل احتياجات شغلك
+            كل اللي البراند بتاعك محتاجه تحت سقف واحد - Website، Marketing، Branding، وContent
           </p>
         </motion.div>
 
@@ -154,7 +154,7 @@ const ServicesSection = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            اكتشف كل خدماتنا
+            اكتشف كل خدمات 4Creative
           </motion.button>
         </motion.div>
       </div>

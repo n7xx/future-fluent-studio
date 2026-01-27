@@ -17,49 +17,49 @@ const services = [
   {
     id: "web-development",
     icon: Globe,
-    title: "تطوير المواقع",
-    description: "نبني مواقع إلكترونية احترافية ومتجاوبة بأحدث التقنيات. سواء موقع شركة، متجر إلكتروني، أو تطبيق ويب.",
-    features: ["تصميم متجاوب", "تجربة مستخدم متميزة", "سرعة عالية", "SEO محسّن"],
+    title: "Website Development",
+    description: "4Creative بتبني Websites تبيع مش مجرد شكل حلو. مواقع سريعة، Responsive، ومحسّنة للـ SEO والـ Conversion.",
+    features: ["Responsive Design", "UX/UI Excellence", "Fast Loading", "SEO Optimized"],
     color: "from-blue-500 to-cyan-500"
   },
   {
     id: "digital-marketing",
     icon: TrendingUp,
-    title: "التسويق الرقمي",
-    description: "استراتيجيات تسويقية متكاملة تزيد مبيعاتك وتوصلك لعملائك المستهدفين. من الإعلانات للسوشيال ميديا.",
-    features: ["إعلانات مدفوعة", "تحسين محركات البحث", "تحليل البيانات", "إدارة السوشيال"],
+    title: "Digital Marketing",
+    description: "Performance Marketing مش بوستات وخلاص! Paid Ads على Meta وGoogle، SEO، وSocial Media Management بنتائج Measurable.",
+    features: ["Meta & Google Ads", "SEO", "Data Analytics", "Social Media Management"],
     color: "from-green-500 to-emerald-500"
   },
   {
     id: "content-creation",
     icon: PenTool,
-    title: "صناعة المحتوى",
-    description: "محتوى إبداعي يحكي قصة علامتك التجارية ويجذب جمهورك. من الكتابة للتصوير لإدارة المحتوى.",
-    features: ["كتابة إبداعية", "تصوير احترافي", "إدارة المحتوى", "خطط محتوى"],
+    title: "Content Creation",
+    description: "Content يتكلم بلغة جمهورك ويحقق Real Engagement. Copywriting، Photography، وContent Strategy.",
+    features: ["Creative Copywriting", "Professional Photography", "Content Management", "Content Strategy"],
     color: "from-purple-500 to-pink-500"
   },
   {
     id: "video-motion",
     icon: Video,
-    title: "المونتاج والموشن",
-    description: "فيديوهات احترافية ورسوم متحركة تجذب الانتباه وتوصل رسالتك بشكل مؤثر وممتع.",
-    features: ["مونتاج احترافي", "موشن جرافيك", "مؤثرات بصرية", "إنتاج فيديو"],
+    title: "Video Production",
+    description: "4Creative بتنتج Videos تجذب الانتباه وتحقق Views. Reels، TikTok، Motion Graphics، وAds Production.",
+    features: ["Professional Editing", "Motion Graphics", "Visual Effects", "Video Ads"],
     color: "from-orange-500 to-red-500"
   },
   {
     id: "design-branding",
     icon: Palette,
-    title: "التصميم والهوية",
-    description: "هوية بصرية متكاملة وتصميمات مبتكرة تميز علامتك التجارية وتخليها تنافس بقوة.",
-    features: ["تصميم الهوية", "تصميم الجرافيك", "التغليف", "المطبوعات"],
+    title: "Branding & Design",
+    description: "Branding يخلي الناس تفتكرك من أول نظرة. Visual Identity متكاملة تميزك عن كل المنافسين.",
+    features: ["Logo Design", "Brand Identity", "Packaging", "Marketing Materials"],
     color: "from-violet-500 to-purple-500"
   },
   {
     id: "digital-strategy",
     icon: Lightbulb,
-    title: "الاستراتيجية الرقمية",
-    description: "خطط استراتيجية شاملة للتحول الرقمي وتحقيق أهداف عملك. نفهم السوق ونخطط للنمو.",
-    features: ["تحليل السوق", "خطة النمو", "استشارات رقمية", "تحليل المنافسين"],
+    title: "Digital Strategy",
+    description: "Growth Plan شاملة للـ Digital Transformation. بنحلل السوق ونحط Strategy تحقق أهداف البزنس بتاعك.",
+    features: ["Market Analysis", "Growth Strategy", "Digital Consulting", "Competitor Analysis"],
     color: "from-amber-500 to-yellow-500"
   },
 ];
@@ -93,15 +93,15 @@ const ServicesPage = () => {
             transition={{ duration: 0.8 }}
           >
             <span className="inline-block text-primary font-bold text-lg mb-4">
-              خدماتنا
+              4Creative Services
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6">
-              <span className="block">حلول رقمية</span>
-              <span className="block gradient-text">متكاملة ومبتكرة</span>
+              <span className="block">Full-Service</span>
+              <span className="block gradient-text">Digital Agency</span>
             </h1>
             <p className="text-xl text-muted-foreground">
-              بنقدم مجموعة شاملة من الخدمات الرقمية علشان نلبي كل احتياجات شغلك. 
-              من التصميم للتطوير للتسويق - كل حاجة تحت سقف واحد.
+              كل اللي البراند بتاعك محتاجه في مكان واحد - Website Development، Digital Marketing، 
+              Branding، Content Creation، وVideo Production.
             </p>
           </motion.div>
         </div>
@@ -177,7 +177,7 @@ const ServicesPage = () => {
                 مش متأكد تبدأ من فين؟
               </h2>
               <p className="text-xl text-muted-foreground mb-8">
-                احكيلنا عن مشروعك وإحنا هنساعدك تختار الخدمات المناسبة
+                احكيلنا عن الـ Brand بتاعك و4Creative هتساعدك تختار الـ Services المناسبة
               </p>
               <motion.button
                 onClick={() => navigate("/start-project")}
@@ -185,7 +185,7 @@ const ServicesPage = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                ابدأ مشروعك
+                ابدأ مشروعك مع 4Creative
               </motion.button>
             </div>
           </motion.div>
