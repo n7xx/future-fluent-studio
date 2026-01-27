@@ -119,7 +119,7 @@ const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
               {/* Logo */}
               <motion.img
                 src={logo}
-                alt="4 Creative"
+                alt="4Creative"
                 className="w-32 h-32 object-contain relative z-10"
                 animate={{
                   filter: [
@@ -170,7 +170,7 @@ const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1 }}
             >
-              <h1 className="text-2xl font-bold gradient-text">4 Creative</h1>
+              <h1 className="text-2xl font-bold gradient-text">4Creative</h1>
               <p className="text-muted-foreground text-sm mt-2">وكالة رقمية إبداعية</p>
             </motion.div>
           </div>
