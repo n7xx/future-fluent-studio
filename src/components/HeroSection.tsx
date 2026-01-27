@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Sparkles, Rocket } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+
   return (
     <section
       id="home"
@@ -90,8 +93,8 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed"
           >
-            نجمع بين التكنولوجيا والإبداع والتسويق لنقدم لك حلولاً رقمية متكاملة
-            تنقل مشروعك إلى آفاق جديدة
+            بنجمع التكنولوجيا والإبداع والتسويق علشان نقدملك حلول رقمية متكاملة
+            تنقل مشروعك لمستوى تاني
           </motion.p>
 
           {/* CTA Buttons */}
@@ -101,23 +104,23 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <motion.a
-              href="#contact"
+            <motion.button
+              onClick={() => navigate("/start-project")}
               className="btn-primary flex items-center gap-3"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <Rocket className="w-5 h-5" />
               ابدأ مشروعك
-            </motion.a>
-            <motion.a
-              href="#portfolio"
+            </motion.button>
+            <motion.button
+              onClick={() => navigate("/portfolio")}
               className="btn-secondary flex items-center gap-3"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               شوف أعمالنا
-            </motion.a>
+            </motion.button>
           </motion.div>
 
           {/* Stats */}

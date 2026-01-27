@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ExternalLink, Eye } from "lucide-react";
 
 const categories = ["الكل", "مواقع إلكترونية", "حملات تسويقية", "فيديوهات", "تصميمات"];
@@ -54,6 +55,7 @@ const PortfolioSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [activeCategory, setActiveCategory] = useState("الكل");
+  const navigate = useNavigate();
 
   const filteredProjects = activeCategory === "الكل"
     ? projects
@@ -178,6 +180,7 @@ const PortfolioSection = () => {
           transition={{ delay: 0.8 }}
         >
           <motion.button
+            onClick={() => navigate("/portfolio")}
             className="btn-secondary"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
