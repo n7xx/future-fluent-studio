@@ -192,7 +192,7 @@ const LoadingAnimation = ({ onComplete }: LoadingAnimationProps) => {
               transition={{ delay: 1 }}
             >
               <h1 className="text-2xl font-bold gradient-text">4Creative</h1>
-              <p style={{ color: colors.textColor }} className="text-sm mt-2">وكالة رقمية إبداعية</p>
+              <p style={{ color: colors.textColor }} className="text-sm mt-2">بنحول أفكارك لواقع رقمي</p>
             </motion.div>
           </div>
         </motion.div>
