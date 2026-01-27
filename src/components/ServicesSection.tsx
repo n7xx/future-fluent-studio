@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { 
   Globe, 
   TrendingUp, 
@@ -59,6 +60,7 @@ const services = [
 const ServicesSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const navigate = useNavigate();
 
   return (
     <section id="services" className="py-32 relative overflow-hidden" ref={ref}>
@@ -84,7 +86,7 @@ const ServicesSection = () => {
             <span className="block gradient-text">متكاملة ومبتكرة</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            نقدم مجموعة شاملة من الخدمات الرقمية لتلبية جميع احتياجات عملك
+            بنقدم مجموعة شاملة من الخدمات الرقمية علشان نلبي كل احتياجات شغلك
           </p>
         </motion.div>
 
@@ -93,11 +95,12 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className="service-card group"
+              className="service-card group cursor-pointer"
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ y: -10 }}
+              onClick={() => navigate(`/services/${service.id}`)}
             >
               {/* Icon */}
               <div className="relative mb-6">
@@ -129,17 +132,31 @@ const ServicesSection = () => {
                 ))}
               </div>
 
-              {/* Arrow */}
-              <a 
-                href={`/services/${service.id}`}
-                className="flex items-center gap-2 text-primary font-medium opacity-0 group-hover:opacity-100 transform translate-x-4 group-hover:translate-x-0 transition-all duration-300"
-              >
+              {/* Arrow - Always Visible */}
+              <div className="flex items-center gap-2 text-primary font-medium">
                 <ArrowUpLeft className="w-5 h-5" />
                 <span>اكتشف المزيد</span>
-              </a>
+              </div>
             </motion.div>
           ))}
         </div>
+
+        {/* View All Button */}
+        <motion.div
+          className="text-center mt-16"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.8 }}
+        >
+          <motion.button
+            onClick={() => navigate("/services")}
+            className="btn-secondary"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            اكتشف كل خدماتنا
+          </motion.button>
+        </motion.div>
       </div>
     </section>
   );

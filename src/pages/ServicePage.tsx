@@ -1,4 +1,5 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle, ArrowUpLeft } from "lucide-react";
 import { getServiceById, services } from "@/data/services";
@@ -8,23 +9,36 @@ import Background3D from "@/components/Background3D";
 
 const ServicePage = () => {
   const { serviceId } = useParams<{ serviceId: string }>();
+  const navigate = useNavigate();
   const service = serviceId ? getServiceById(serviceId) : undefined;
+
+  // Scroll to top when serviceId changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [serviceId]);
 
   if (!service) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">الخدمة غير موجودة</h1>
-          <Link to="/" className="btn-primary inline-flex items-center gap-2">
+          <h1 className="text-4xl font-bold mb-4">الخدمة مش موجودة</h1>
+          <button 
+            onClick={() => navigate("/")}
+            className="btn-primary inline-flex items-center gap-2"
+          >
             <ArrowRight className="w-5 h-5" />
-            العودة للرئيسية
-          </Link>
+            ارجع للرئيسية
+          </button>
         </div>
       </div>
     );
   }
 
   const Icon = service.icon;
+
+  const handleServiceClick = (newServiceId: string) => {
+    navigate(`/services/${newServiceId}`);
+  };
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
@@ -40,13 +54,13 @@ const ServicePage = () => {
             transition={{ duration: 0.8 }}
             className="max-w-4xl"
           >
-            <Link 
-              to="/#services" 
+            <button 
+              onClick={() => navigate("/services")}
               className="inline-flex items-center gap-2 text-primary mb-8 hover:underline"
             >
               <ArrowRight className="w-5 h-5" />
-              العودة للخدمات
-            </Link>
+              ارجع للخدمات
+            </button>
             
             <div className="flex items-center gap-6 mb-8">
               <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center">
@@ -73,7 +87,7 @@ const ServicePage = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl font-bold mb-12">ما نقدمه</h2>
+            <h2 className="text-3xl font-bold mb-12">إيه اللي بنقدمه</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {service.features.map((feature, index) => (
                 <motion.div
@@ -104,7 +118,7 @@ const ServicePage = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-3xl font-bold mb-8">لماذا تختارنا؟</h2>
+              <h2 className="text-3xl font-bold mb-8">ليه تختارنا؟</h2>
               <div className="space-y-6">
                 {service.benefits.map((benefit, index) => (
                   <motion.div
@@ -131,7 +145,7 @@ const ServicePage = () => {
               transition={{ duration: 0.8 }}
               className="glass-card p-8"
             >
-              <h3 className="text-2xl font-bold mb-8">منهجية العمل</h3>
+              <h3 className="text-2xl font-bold mb-8">طريقة شغلنا</h3>
               <div className="space-y-6">
                 {service.process.map((step, index) => (
                   <div key={index} className="flex items-start gap-4">
@@ -158,8 +172,8 @@ const ServicePage = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl font-bold mb-4">دراسات الحالة</h2>
-            <p className="text-muted-foreground mb-12">مشاريع ناجحة نفخر بها</p>
+            <h2 className="text-3xl font-bold mb-4">مشاريع نفتخر بيها</h2>
+            <p className="text-muted-foreground mb-12">شوف إزاي ساعدنا عملاءنا ينجحوا</p>
             
             <div className="grid md:grid-cols-2 gap-8">
               {service.caseStudies.map((caseStudy, index) => (
@@ -220,15 +234,15 @@ const ServicePage = () => {
               جاهز تبدأ مشروعك؟
             </h2>
             <p className="text-muted-foreground text-lg mb-8">
-              تواصل معنا الآن ودعنا نساعدك في تحقيق أهدافك
+              كلمنا دلوقتي وخلينا نساعدك تحقق أهدافك
             </p>
-            <Link
-              to="/#contact"
+            <button
+              onClick={() => navigate("/start-project")}
               className="btn-primary inline-flex items-center gap-3"
             >
               <ArrowUpLeft className="w-5 h-5" />
-              تواصل معنا
-            </Link>
+              ابدأ مشروعك
+            </button>
           </motion.div>
         </div>
       </section>
@@ -236,7 +250,7 @@ const ServicePage = () => {
       {/* Other Services */}
       <section className="py-20 relative">
         <div className="container mx-auto px-6 relative z-10">
-          <h2 className="text-2xl font-bold mb-8">خدمات أخرى</h2>
+          <h2 className="text-2xl font-bold mb-8">خدمات تانية</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {services
               .filter(s => s.id !== service.id)
@@ -251,9 +265,9 @@ const ServicePage = () => {
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <Link
-                      to={`/services/${otherService.id}`}
-                      className="glass-card p-6 block group"
+                    <button
+                      onClick={() => handleServiceClick(otherService.id)}
+                      className="glass-card p-6 block group w-full text-right cursor-pointer"
                     >
                       <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                         <OtherIcon className="w-6 h-6 text-primary" />
@@ -264,7 +278,11 @@ const ServicePage = () => {
                       <p className="text-sm text-muted-foreground line-clamp-2">
                         {otherService.shortDescription}
                       </p>
-                    </Link>
+                      <div className="flex items-center gap-2 text-primary font-medium mt-4">
+                        <ArrowUpLeft className="w-4 h-4" />
+                        <span className="text-sm">اكتشف المزيد</span>
+                      </div>
+                    </button>
                   </motion.div>
                 );
               })}

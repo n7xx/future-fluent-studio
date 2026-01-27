@@ -1,22 +1,42 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const navigate = useNavigate();
 
   const links = {
     services: [
-      { label: "تطوير المواقع", href: "#services" },
-      { label: "التسويق الرقمي", href: "#services" },
-      { label: "صناعة المحتوى", href: "#services" },
-      { label: "التصميم والهوية", href: "#services" },
+      { label: "تطوير المواقع", href: "/services/web-development" },
+      { label: "التسويق الرقمي", href: "/services/digital-marketing" },
+      { label: "صناعة المحتوى", href: "/services/content-creation" },
+      { label: "التصميم والهوية", href: "/services/design-branding" },
     ],
     company: [
-      { label: "من نحن", href: "#about" },
-      { label: "أعمالنا", href: "#portfolio" },
-      { label: "منهجيتنا", href: "#process" },
-      { label: "تواصل معنا", href: "#contact" },
+      { label: "من نحن", href: "/#about" },
+      { label: "أعمالنا", href: "/portfolio" },
+      { label: "خدماتنا", href: "/services" },
+      { label: "ابدأ مشروعك", href: "/start-project" },
     ],
+  };
+
+  const handleNavClick = (href: string) => {
+    if (href.startsWith('/#')) {
+      const hash = href.replace('/#', '');
+      if (window.location.pathname !== '/') {
+        navigate('/');
+        setTimeout(() => {
+          const element = document.getElementById(hash);
+          element?.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      } else {
+        const element = document.getElementById(hash);
+        element?.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      navigate(href);
+    }
   };
 
   return (
@@ -31,12 +51,13 @@ const Footer = () => {
             <motion.img
               src={logo}
               alt="4 Creative"
-              className="h-16 w-auto mb-6"
+              className="h-16 w-auto mb-6 cursor-pointer"
               whileHover={{ scale: 1.05 }}
+              onClick={() => navigate("/")}
             />
             <p className="text-muted-foreground leading-relaxed mb-6 max-w-md">
-              نحن وكالة رقمية متكاملة نجمع بين الإبداع والتكنولوجيا لتحويل أفكارك
-              إلى حلول رقمية استثنائية تميزك في السوق.
+              إحنا وكالة رقمية متكاملة بنجمع بين الإبداع والتكنولوجيا علشان نحول
+              أفكارك لحلول رقمية استثنائية تميزك في السوق.
             </p>
           </div>
 
@@ -46,12 +67,12 @@ const Footer = () => {
             <ul className="space-y-3">
               {links.services.map((link, index) => (
                 <li key={index}>
-                  <a
-                    href={link.href}
+                  <button
+                    onClick={() => handleNavClick(link.href)}
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     {link.label}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -59,16 +80,16 @@ const Footer = () => {
 
           {/* Company Links */}
           <div>
-            <h4 className="font-bold text-lg mb-4">الشركة</h4>
+            <h4 className="font-bold text-lg mb-4">روابط مهمة</h4>
             <ul className="space-y-3">
               {links.company.map((link, index) => (
                 <li key={index}>
-                  <a
-                    href={link.href}
+                  <button
+                    onClick={() => handleNavClick(link.href)}
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     {link.label}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -78,7 +99,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border/30 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
-            © {currentYear} 4 Creative. جميع الحقوق محفوظة.
+            © {currentYear} 4 Creative. كل الحقوق محفوظة.
           </p>
           <p className="text-muted-foreground text-sm">
             صُنع بـ ❤️ بواسطة فريق 4 Creative
