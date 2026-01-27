@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
-import logo from "@/assets/logo.png";
+import logoDark from "@/assets/logo.png";
+import logoLight from "@/assets/logo-light.png";
 
 const navItems = [
   { label: "الرئيسية", href: "/", isPage: true },
@@ -71,7 +72,7 @@ const Navbar = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled ? "glass py-2" : "py-3"
+          isScrolled ? "glass py-1" : "py-2"
         }`}
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
@@ -81,7 +82,11 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             onClick={() => navigate("/")}
           >
-            <img src={logo} alt="4Creative - Digital Marketing Agency" className="h-24 w-auto" />
+            <img 
+              src={isDark ? logoDark : logoLight} 
+              alt="4Creative - Digital Marketing Agency" 
+              className="h-16 w-auto" 
+            />
           </motion.div>
 
           {/* Desktop Navigation */}
