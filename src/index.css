@@ -6,6 +6,59 @@
 
 @layer base {
   :root {
+    /* Light theme */
+    --background: 0 0% 100%;
+    --foreground: 270 50% 10%;
+
+    --card: 0 0% 98%;
+    --card-foreground: 270 50% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 270 50% 10%;
+
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 270 20% 95%;
+    --secondary-foreground: 270 50% 10%;
+
+    --muted: 270 20% 94%;
+    --muted-foreground: 270 20% 40%;
+
+    --accent: 187 94% 48%;
+    --accent-foreground: 270 50% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 270 20% 88%;
+    --input: 270 20% 92%;
+    --ring: 262 83% 58%;
+
+    --radius: 1rem;
+
+    /* Custom agency colors */
+    --glow-purple: 262 83% 58%;
+    --glow-cyan: 187 94% 48%;
+    --glow-pink: 330 80% 60%;
+    --dark-purple: 270 50% 6%;
+    --glass-bg: 270 20% 96%;
+    --glass-border: 270 20% 85%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(262, 83%, 58%) 0%, hsl(187, 94%, 48%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(0, 0%, 100%) 0%, hsl(270, 20%, 98%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(0, 0%, 100%) 0%, hsl(270, 20%, 98%) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsla(262, 83%, 58%, 0.15) 0%, transparent 70%);
+
+    /* Shadows */
+    --shadow-glow-sm: 0 0 20px hsla(262, 83%, 58%, 0.2);
+    --shadow-glow-md: 0 0 40px hsla(262, 83%, 58%, 0.25);
+    --shadow-glow-lg: 0 0 60px hsla(262, 83%, 58%, 0.3);
+    --shadow-glow-cyan: 0 0 40px hsla(187, 94%, 48%, 0.25);
+  }
+
+  .dark {
     /* Dark futuristic theme - Purple/Cyan Web3 aesthetic */
     --background: 270 50% 4%;
     --foreground: 270 20% 98%;
@@ -35,8 +88,6 @@
     --input: 270 30% 15%;
     --ring: 262 83% 75%;
 
-    --radius: 1rem;
-
     /* Custom agency colors */
     --glow-purple: 262 83% 58%;
     --glow-cyan: 187 94% 48%;
@@ -57,11 +108,6 @@
     --shadow-glow-lg: 0 0 60px hsla(262, 83%, 58%, 0.5);
     --shadow-glow-cyan: 0 0 40px hsla(187, 94%, 48%, 0.4);
   }
-
-  .dark {
-    --background: 270 50% 4%;
-    --foreground: 270 20% 98%;
-  }
 }
 
 @layer base {
@@ -76,7 +122,15 @@
 
   body {
     @apply bg-background text-foreground font-tajawal antialiased;
+  }
+
+  .dark body {
     background: linear-gradient(180deg, hsl(270, 50%, 6%) 0%, hsl(270, 50%, 4%) 100%);
+  }
+
+  h1 {
+    @apply leading-relaxed;
+    line-height: 1.4 !important;
   }
 
   ::selection {
@@ -86,15 +140,25 @@
 }
 
 @layer components {
-  /* Glass morphism effect */
+  /* Glass morphism effect - Light mode */
   .glass {
     @apply backdrop-blur-xl border;
+    background: linear-gradient(135deg, hsla(270, 20%, 100%, 0.8) 0%, hsla(270, 20%, 98%, 0.6) 100%);
+    border-color: hsla(270, 20%, 80%, 0.4);
+  }
+
+  .dark .glass {
     background: linear-gradient(135deg, hsla(270, 40%, 15%, 0.6) 0%, hsla(270, 40%, 10%, 0.4) 100%);
     border-color: hsla(270, 30%, 30%, 0.3);
   }
 
   .glass-card {
     @apply backdrop-blur-xl rounded-2xl border transition-all duration-500;
+    background: linear-gradient(135deg, hsla(270, 20%, 100%, 0.9) 0%, hsla(270, 20%, 98%, 0.7) 100%);
+    border-color: hsla(270, 20%, 85%, 0.3);
+  }
+
+  .dark .glass-card {
     background: linear-gradient(135deg, hsla(270, 40%, 15%, 0.5) 0%, hsla(270, 40%, 8%, 0.3) 100%);
     border-color: hsla(270, 30%, 30%, 0.2);
   }
@@ -138,9 +202,10 @@
 
   /* Button variants */
   .btn-primary {
-    @apply relative px-8 py-4 rounded-xl font-bold text-lg overflow-hidden transition-all duration-300;
+    @apply relative px-8 py-4 rounded-xl font-bold text-lg overflow-hidden transition-all duration-300 text-center flex items-center justify-center;
     background: linear-gradient(135deg, hsl(262, 83%, 58%) 0%, hsl(280, 80%, 50%) 100%);
     box-shadow: 0 0 30px hsla(262, 83%, 58%, 0.4);
+    color: white;
   }
 
   .btn-primary:hover {
@@ -149,10 +214,18 @@
   }
 
   .btn-secondary {
-    @apply relative px-8 py-4 rounded-xl font-bold text-lg overflow-hidden transition-all duration-300 border-2;
+    @apply relative px-8 py-4 rounded-xl font-bold text-lg overflow-hidden transition-all duration-300 border-2 text-center flex items-center justify-center;
     border-color: hsla(262, 83%, 58%, 0.5);
     background: hsla(270, 40%, 10%, 0.5);
     backdrop-filter: blur(10px);
+  }
+
+  .dark .btn-secondary {
+    background: hsla(270, 40%, 10%, 0.5);
+  }
+
+  .btn-secondary {
+    background: hsla(270, 20%, 98%, 0.8);
   }
 
   .btn-secondary:hover {

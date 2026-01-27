@@ -60,12 +60,12 @@ const CTASection = () => {
 
             <motion.a
               href="#contact"
-              className="btn-primary inline-flex items-center gap-3 text-xl px-10 py-5"
+              className="btn-primary inline-flex items-center gap-3 text-xl md:text-xl text-base px-8 md:px-10 py-4 md:py-5"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span>ابدأ مشروعك مع 4Creative</span>
-              <ArrowUpLeft className="w-6 h-6" />
+              <span className="text-sm md:text-xl whitespace-nowrap">ابدأ مشروعك مع 4Creative</span>
+              <ArrowUpLeft className="w-5 h-5 md:w-6 md:h-6" />
             </motion.a>
           </motion.div>
         </motion.div>
