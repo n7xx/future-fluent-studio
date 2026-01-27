@@ -129,8 +129,7 @@
   }
 
   h1 {
-    @apply leading-relaxed;
-    line-height: 1.4 !important;
+    line-height: 1.25;
   }
 
   ::selection {
