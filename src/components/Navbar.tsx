@@ -72,7 +72,7 @@ const Navbar = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled ? "glass py-1" : "py-2"
+          isScrolled ? "glass py-2" : "py-3"
         }`}
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
