@@ -3,17 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#8b5cf6" />
     <link rel="icon" href="/favicon.png" type="image/png" />
     <title>4Creative | Digital Marketing Agency في مصر - Website Development, Branding, Social Media</title>
     <meta name="description" content="4Creative هي Creative Agency متخصصة في Digital Marketing، Website Development، Branding، وContent Creation في مصر. بنبني براندات تفضل في دماغ الناس!" />
     <meta name="keywords" content="Digital Marketing Agency, Creative Agency Egypt, Website Development, Web Design, Branding, Social Media Management, Content Creation, Video Production, Marketing Agency in Egypt, تسويق رقمي, وكالة إعلانية, تصميم مواقع, براندينج" />
     <meta name="author" content="4Creative" />
     
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Preload critical font -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" />
+    </noscript>
+    
     <meta property="og:title" content="4Creative | أفضل Digital Marketing Agency في مصر" />
     <meta property="og:description" content="4Creative بتبني براندات تفضل في دماغ الناس. Website Development، Digital Marketing، Branding، وContent Creation - كل حاجة تحت سقف واحد!" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="/og-image.png" />
-    <meta property="og:site_name" content="4Creative" />
     <meta property="og:site_name" content="4Creative" />
     
     <meta name="twitter:card" content="summary_large_image" />
@@ -26,6 +37,9 @@
   </head>
 
   <body>
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:right-4 focus:z-[200] focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-lg focus:font-medium">
+      تخطي إلى المحتوى الرئيسي
+    </a>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
