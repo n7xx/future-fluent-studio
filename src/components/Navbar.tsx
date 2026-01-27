@@ -85,7 +85,7 @@ const Navbar = () => {
             <img 
               src={isDark ? logoDark : logoLight} 
               alt="4Creative - Digital Marketing Agency" 
-              className="h-16 w-auto" 
+              className="h-12 w-auto transition-all duration-300" 
             />
           </motion.div>
 
