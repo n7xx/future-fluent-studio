@@ -50,7 +50,7 @@ const Footer = () => {
           <div className="md:col-span-2">
             <motion.img
               src={logo}
-              alt="4 Creative"
+              alt="4Creative"
               className="h-16 w-auto mb-6 cursor-pointer"
               whileHover={{ scale: 1.05 }}
               onClick={() => navigate("/")}
@@ -99,10 +99,10 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border/30 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
-            © {currentYear} 4 Creative. كل الحقوق محفوظة.
+            © {currentYear} 4Creative. كل الحقوق محفوظة.
           </p>
           <p className="text-muted-foreground text-sm">
-            صُنع بـ ❤️ بواسطة فريق 4 Creative
+            صُنع بـ ❤️ بواسطة فريق 4Creative
           </p>
         </div>
       </div>

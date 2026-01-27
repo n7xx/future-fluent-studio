@@ -3,43 +3,82 @@ import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { 
   Send, 
-  Phone, 
-  Mail, 
-  MapPin, 
   MessageCircle,
-  Instagram,
-  Twitter,
-  Linkedin
+  Calendar,
+  Star,
+  Users,
+  Award,
+  Clock
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
+
+const benefits = [
+  {
+    icon: Star,
+    title: "جودة عالية",
+    description: "نلتزم بأعلى معايير الجودة في كل مشروع"
+  },
+  {
+    icon: Users,
+    title: "فريق متخصص",
+    description: "خبراء في كل مجال يعملون على مشروعك"
+  },
+  {
+    icon: Award,
+    title: "نتائج مضمونة",
+    description: "سجل حافل بالنجاحات مع عملائنا"
+  },
+  {
+    icon: Clock,
+    title: "التزام بالمواعيد",
+    description: "نسلم مشاريعنا في الوقت المحدد"
+  }
+];
+
+const trustSignals = [
+  { number: "+150", label: "مشروع ناجح" },
+  { number: "+50", label: "عميل سعيد" },
+  { number: "+5", label: "سنين خبرة" },
+  { number: "100%", label: "رضا العملاء" }
+];
 
 const ContactSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
+    company: "",
     service: "",
-    message: "",
+    budget: "",
+    message: ""
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log(formData);
+    toast({
+      title: "تم إرسال طلبك بنجاح! 🎉",
+      description: "هنتواصل معاك في أقرب وقت",
+    });
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      company: "",
+      service: "",
+      budget: "",
+      message: ""
+    });
   };
 
-  const contactInfo = [
-    { icon: Phone, label: "اتصل بنا", value: "+20 10 123 4567" },
-    { icon: Mail, label: "راسلنا", value: "hello@4creative.com" },
-    { icon: MapPin, label: "موقعنا", value: "القاهرة، مصر" },
-  ];
-
-  const socialLinks = [
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-  ];
+  const handleWhatsApp = () => {
+    window.open("https://wa.me/201000000000?text=مرحبا، عايز أبدأ مشروع جديد", "_blank");
+  };
 
   return (
     <section id="contact" className="py-32 relative overflow-hidden" ref={ref}>
@@ -55,160 +94,189 @@ const ContactSection = () => {
             تواصل معنا
           </span>
           <h2 className="section-title">
-            نحب نسمع منك
-            <span className="block gradient-text">ابدأ محادثتك معنا</span>
+            جاهز تبدأ مشروعك؟
+            <span className="block gradient-text">خلينا نساعدك</span>
           </h2>
+          <p className="text-xl text-muted-foreground leading-relaxed mt-6">
+            إحنا هنا علشان نساعدك تبني حضور رقمي قوي. 
+            سواء كنت بتبدأ من الصفر أو عايز تطور اللي عندك، 
+            فريقنا جاهز يشتغل معاك خطوة بخطوة.
+          </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Contact Form */}
-          <motion.div
-            className="glass-card p-8 md:p-10"
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
-          >
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium mb-2">الاسم</label>
-                  <input
-                    type="text"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-secondary/50 border border-border focus:border-primary focus:outline-none transition-colors"
-                    placeholder="اسمك الكريم"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">البريد الإلكتروني</label>
-                  <input
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-secondary/50 border border-border focus:border-primary focus:outline-none transition-colors"
-                    placeholder="email@example.com"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium mb-2">رقم الجوال</label>
-                  <input
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-secondary/50 border border-border focus:border-primary focus:outline-none transition-colors"
-                    placeholder="+20 1X XXX XXXX"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">الخدمة المطلوبة</label>
-                  <select
-                    value={formData.service}
-                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-secondary/50 border border-border focus:border-primary focus:outline-none transition-colors"
-                  >
-                    <option value="">اختر الخدمة</option>
-                    <option value="web">تطوير المواقع</option>
-                    <option value="marketing">التسويق الرقمي</option>
-                    <option value="content">صناعة المحتوى</option>
-                    <option value="video">المونتاج والموشن</option>
-                    <option value="design">التصميم والهوية</option>
-                    <option value="strategy">الاستراتيجية الرقمية</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-2">رسالتك</label>
-                <textarea
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  rows={5}
-                  className="w-full px-4 py-3 rounded-xl bg-secondary/50 border border-border focus:border-primary focus:outline-none transition-colors resize-none"
-                  placeholder="اخبرنا عن مشروعك..."
-                  required
-                />
-              </div>
-
-              <motion.button
-                type="submit"
-                className="btn-primary w-full flex items-center justify-center gap-3"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Send className="w-5 h-5" />
-                <span>أرسل رسالتك</span>
-              </motion.button>
-            </form>
-          </motion.div>
-
-          {/* Contact Info */}
+          {/* Left - Benefits & Trust Signals */}
           <motion.div
             className="space-y-8"
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8 }}
+          >
+            {/* Benefits Grid */}
+            <div className="grid grid-cols-2 gap-4">
+              {benefits.map((benefit, index) => (
+                <motion.div
+                  key={benefit.title}
+                  className="flex items-start gap-3 p-4 glass-card rounded-xl"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.2 + index * 0.1 }}
+                  whileHover={{ y: -5 }}
+                >
+                  <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
+                    <benefit.icon className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-sm">{benefit.title}</h3>
+                    <p className="text-xs text-muted-foreground">{benefit.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Trust Signals */}
+            <motion.div 
+              className="grid grid-cols-4 gap-4 glass-card p-6 rounded-xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.5 }}
+            >
+              {trustSignals.map((signal, index) => (
+                <div key={signal.label} className="text-center">
+                  <div className="text-2xl font-black gradient-text">{signal.number}</div>
+                  <div className="text-xs text-muted-foreground">{signal.label}</div>
+                </div>
+              ))}
+            </motion.div>
+
+            {/* Why Work With Us */}
+            <motion.div
+              className="glass-card p-6 rounded-xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.6 }}
+            >
+              <h3 className="font-bold text-lg mb-4">ليه تشتغل معانا؟</h3>
+              <ul className="space-y-3">
+                {[
+                  "فاهمين السوق المصري وعندنا خبرة كبيرة",
+                  "فريق متكامل - من التصميم للتطوير للتسويق",
+                  "نتائج ملموسة تفرق مع مشروعك"
+                ].map((item, index) => (
+                  <li key={index} className="flex items-center gap-2 text-muted-foreground text-sm">
+                    <div className="w-2 h-2 rounded-full bg-primary" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </motion.div>
+
+          {/* Right - Contact Form */}
+          <motion.div
+            className="glass-card p-8 rounded-2xl"
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {/* WhatsApp Button */}
-            <motion.a
-              href="https://wa.me/201012345678"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="glass-card p-6 flex items-center gap-4 group cursor-pointer"
-              whileHover={{ y: -5 }}
-              style={{
-                background: "linear-gradient(135deg, hsla(142, 70%, 45%, 0.2) 0%, hsla(142, 70%, 35%, 0.1) 100%)",
-              }}
-            >
-              <div className="w-14 h-14 rounded-xl bg-green-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                <MessageCircle className="w-7 h-7 text-green-400" />
+            <h2 className="text-2xl font-bold mb-6">ابعت لنا طلبك</h2>
+            
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <Input
+                  placeholder="اسمك"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  required
+                  className="bg-background/50"
+                />
+                <Input
+                  placeholder="رقم الموبايل"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  required
+                  className="bg-background/50"
+                />
               </div>
-              <div>
-                <h3 className="font-bold text-lg">تواصل عبر واتساب</h3>
-                <p className="text-muted-foreground">رد سريع ومباشر</p>
-              </div>
-            </motion.a>
+              
+              <Input
+                type="email"
+                placeholder="البريد الإلكتروني"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                required
+                className="bg-background/50"
+              />
+              
+              <Input
+                placeholder="اسم الشركة أو المشروع"
+                value={formData.company}
+                onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                className="bg-background/50"
+              />
 
-            {/* Contact Info Cards */}
-            {contactInfo.map((info, index) => (
-              <motion.div
-                key={index}
-                className="glass-card p-6 flex items-center gap-4"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.3 + index * 0.1 }}
-                whileHover={{ y: -5 }}
+              <select
+                value={formData.service}
+                onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                className="w-full p-3 rounded-lg bg-background/50 border border-border text-foreground"
+                required
               >
-                <div className="w-14 h-14 rounded-xl bg-primary/20 flex items-center justify-center">
-                  <info.icon className="w-7 h-7 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg">{info.label}</h3>
-                  <p className="text-muted-foreground">{info.value}</p>
-                </div>
-              </motion.div>
-            ))}
+                <option value="">اختار الخدمة</option>
+                <option value="web">تطوير المواقع</option>
+                <option value="marketing">التسويق الرقمي</option>
+                <option value="content">صناعة المحتوى</option>
+                <option value="video">المونتاج والموشن</option>
+                <option value="design">التصميم والهوية</option>
+                <option value="strategy">الاستراتيجية الرقمية</option>
+              </select>
 
-            {/* Social Links */}
-            <div className="pt-4">
-              <p className="text-muted-foreground mb-4">تابعنا على</p>
+              <select
+                value={formData.budget}
+                onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+                className="w-full p-3 rounded-lg bg-background/50 border border-border text-foreground"
+              >
+                <option value="">الميزانية التقريبية (اختياري)</option>
+                <option value="small">أقل من 5,000 جنيه</option>
+                <option value="medium">5,000 - 15,000 جنيه</option>
+                <option value="large">15,000 - 50,000 جنيه</option>
+                <option value="enterprise">أكثر من 50,000 جنيه</option>
+              </select>
+              
+              <Textarea
+                placeholder="احكيلنا عن مشروعك..."
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                rows={4}
+                className="bg-background/50"
+              />
+              
+              <Button type="submit" className="w-full btn-primary">
+                <Send className="w-5 h-5 ml-2" />
+                ابعت طلبك
+              </Button>
+            </form>
+
+            {/* Alternative Contact */}
+            <div className="mt-6 pt-6 border-t border-border/30">
+              <p className="text-center text-sm text-muted-foreground mb-4">
+                أو تواصل معانا مباشرة
+              </p>
               <div className="flex gap-4">
-                {socialLinks.map((social, index) => (
-                  <motion.a
-                    key={index}
-                    href={social.href}
-                    className="w-12 h-12 rounded-xl glass flex items-center justify-center group"
-                    whileHover={{ y: -5, scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <social.icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-                  </motion.a>
-                ))}
+                <Button 
+                  onClick={handleWhatsApp}
+                  className="flex-1 bg-green-600 hover:bg-green-700"
+                >
+                  <MessageCircle className="w-5 h-5 ml-2" />
+                  واتساب
+                </Button>
+                <Button 
+                  variant="outline"
+                  className="flex-1"
+                  onClick={() => window.open("https://calendly.com", "_blank")}
+                >
+                  <Calendar className="w-5 h-5 ml-2" />
+                  احجز ميتينج
+                </Button>
               </div>
             </div>
           </motion.div>

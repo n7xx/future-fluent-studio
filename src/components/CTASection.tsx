@@ -55,7 +55,7 @@ const CTASection = () => {
 
             <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
               دعنا نحول رؤيتك إلى واقع رقمي مذهل. تواصل معنا اليوم وابدأ رحلة
-              النجاح مع فريق 4 Creative
+              النجاح مع فريق 4Creative
             </p>
 
             <motion.a
