@@ -5,31 +5,31 @@ import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "أحمد محمد",
-    role: "مدير تنفيذي",
-    company: "شركة التقنية المتقدمة",
-    content: "تجربة رائعة مع فريق 4Creative! تم تنفيذ المشروع بجودة عالية وفي الوقت المحدد. أنصح بهم بشدة.",
+    name: "أحمد سامي",
+    role: "CEO",
+    company: "TechStart Egypt",
+    content: "4Creative غيروا كل حاجة! الـ Website الجديد ضاعف الـ Leads بتاعتنا 3 مرات. فريق Professional جداً وفاهمين الـ Digital Marketing صح.",
     rating: 5,
   },
   {
-    name: "سارة العلي",
-    role: "مديرة التسويق",
-    company: "متجر الأناقة",
-    content: "فريق محترف ومبدع. ساعدونا في زيادة مبيعاتنا بنسبة 200% خلال 3 أشهر فقط!",
+    name: "نورا حسن",
+    role: "Marketing Director",
+    company: "Fashion House",
+    content: "اشتغلنا مع 4Creative على الـ Social Media والـ Paid Ads. النتيجة؟ 200% زيادة في المبيعات في 3 شهور! Highly Recommended.",
     rating: 5,
   },
   {
-    name: "خالد الحربي",
-    role: "مؤسس",
-    company: "منصة تعليمية",
-    content: "أفضل وكالة تعاملت معها. يفهمون احتياجاتك ويقدمون حلولاً تفوق التوقعات.",
+    name: "محمد عادل",
+    role: "Founder",
+    company: "EduPlatform",
+    content: "أحسن Agency اتعاملت معاها. بيفهموا الـ Brand وبيشتغلوا بجد. الـ Branding اللي عملوهولنا خلى الناس تعرفنا من أول نظرة.",
     rating: 5,
   },
 ];
 
 const clients = [
-  "شركة التقنية", "متجر الأناقة", "منصة تعليمية", 
-  "مطعم فاخر", "شركة استشارات", "متجر إلكتروني"
+  "TechStart", "Fashion House", "EduPlatform", 
+  "Cairo Eats", "ConsultPro", "ShopEasy"
 ];
 
 const TestimonialsSection = () => {
@@ -47,11 +47,11 @@ const TestimonialsSection = () => {
           transition={{ duration: 0.8 }}
         >
           <span className="inline-block text-primary font-bold text-lg mb-4">
-            آراء عملائنا
+            Client Reviews
           </span>
           <h2 className="section-title">
-            ماذا يقولون
-            <span className="block gradient-text">عن تجربتهم معنا</span>
+            براندات اتحولت
+            <span className="block gradient-text">مع 4Creative</span>
           </h2>
         </motion.div>
 
@@ -104,7 +104,7 @@ const TestimonialsSection = () => {
           transition={{ delay: 0.6 }}
         >
           <p className="text-center text-muted-foreground mb-8">
-            عملاء يثقون بنا
+            Brands اشتغلنا معاها في 4Creative
           </p>
           
           <div className="flex flex-wrap justify-center gap-8">

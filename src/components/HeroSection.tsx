@@ -61,7 +61,7 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center max-w-5xl mx-auto">
+      <div className="text-center max-w-5xl mx-auto">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -71,7 +71,7 @@ const HeroSection = () => {
           >
             <Sparkles className="w-5 h-5 text-primary" />
             <span className="text-sm font-medium text-foreground/80">
-              وكالة رقمية متكاملة للحلول الإبداعية
+              4Creative | Digital Marketing Agency في مصر
             </span>
           </motion.div>
 
@@ -82,8 +82,8 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-5xl md:text-7xl lg:text-8xl font-black leading-tight mb-8"
           >
-            <span className="block text-foreground">نصنع الأفكار</span>
-            <span className="block gradient-text">إلى واقع رقمي</span>
+            <span className="block text-foreground">البراند بتاعك</span>
+            <span className="block gradient-text">يستاهل يكبر</span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -93,8 +93,8 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed"
           >
-            بنجمع التكنولوجيا والإبداع والتسويق علشان نقدملك حلول رقمية متكاملة
-            تنقل مشروعك لمستوى تاني
+            إحنا في 4Creative بنبني لك Marketing System كامل - من Website Development 
+            لـ Social Media Management لـ Branding. مش بوستات وخلاص، إحنا بنشتغل Results!
           </motion.p>
 
           {/* CTA Buttons */}
@@ -111,7 +111,7 @@ const HeroSection = () => {
               whileTap={{ scale: 0.95 }}
             >
               <Rocket className="w-5 h-5" />
-              ابدأ مشروعك
+              ابدأ مشروعك مع 4Creative
             </motion.button>
             <motion.button
               onClick={() => navigate("/portfolio")}
@@ -131,9 +131,9 @@ const HeroSection = () => {
             className="grid grid-cols-3 gap-8 mt-20 max-w-2xl mx-auto"
           >
             {[
-              { number: "+150", label: "مشروع منجز" },
-              { number: "+50", label: "عميل سعيد" },
-              { number: "+5", label: "سنوات خبرة" },
+              { number: "+150", label: "مشروع ناجح مع 4Creative" },
+              { number: "+50", label: "براند اتحول معانا" },
+              { number: "+5", label: "سنين في السوق المصري" },
             ].map((stat, index) => (
               <motion.div
                 key={index}

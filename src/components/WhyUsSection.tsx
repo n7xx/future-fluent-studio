@@ -6,28 +6,28 @@ import { Users, Lightbulb, BarChart3, Clock, Handshake } from "lucide-react";
 const reasons = [
   {
     icon: Users,
-    title: "فريق متخصص",
-    description: "فريق من الخبراء المتخصصين في مختلف مجالات التسويق الرقمي والتصميم والتطوير",
+    title: "Full-Service Team",
+    description: "Designers، Developers، Marketers، وContent Creators - كل اللي محتاجه في مكان واحد",
   },
   {
     icon: Lightbulb,
-    title: "أفكار غير تقليدية",
-    description: "نؤمن بالتفكير خارج الصندوق ونقدم حلولاً إبداعية تميزك عن المنافسين",
+    title: "Creative Solutions",
+    description: "4Creative مش بتعمل الـ Standard - بنفكر Creative ونقدم حلول تميزك عن المنافسين",
   },
   {
     icon: BarChart3,
-    title: "نتائج قابلة للقياس",
-    description: "نركز على تحقيق نتائج ملموسة وقابلة للقياس تحقق أهداف عملك",
+    title: "Data-Driven Results",
+    description: "كل حاجة بنعملها Measurable. بنشتغل بـ KPIs ونتائج تقدر تشوفها",
   },
   {
     icon: Clock,
-    title: "التزام بالمواعيد",
-    description: "نحترم وقتك ونلتزم بالجداول الزمنية المتفق عليها دون تأخير",
+    title: "Deadline Commitment",
+    description: "في 4Creative الـ Deadline مقدس. بنسلم في الوقت المتفق عليه",
   },
   {
     icon: Handshake,
-    title: "شراكة طويلة المدى",
-    description: "نبني علاقات شراكة حقيقية مع عملائنا تمتد لسنوات من التعاون المثمر",
+    title: "Long-term Partnership",
+    description: "مش عايزين مشروع ونمشي - بنبني شراكات حقيقية مع البراندات اللي بنشتغل معاها",
   },
 ];
 
@@ -61,11 +61,11 @@ const WhyUsSection = () => {
           transition={{ duration: 0.8 }}
         >
           <span className="inline-block text-primary font-bold text-lg mb-4">
-            لماذا نحن
+            ليه 4Creative؟
           </span>
           <h2 className="section-title">
-            ما الذي يميزنا
-            <span className="block gradient-text">عن الآخرين</span>
+            اللي بيميزنا
+            <span className="block gradient-text">عن باقي الـ Agencies</span>
           </h2>
         </motion.div>
 

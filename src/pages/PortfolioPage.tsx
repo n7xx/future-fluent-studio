@@ -6,107 +6,107 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Background3D from "@/components/Background3D";
 
-const categories = ["الكل", "مواقع إلكترونية", "حملات تسويقية", "فيديوهات", "تصميمات"];
+const categories = ["الكل", "Website Development", "Marketing Campaigns", "Video Production", "Branding"];
 
 const projects = [
   {
     id: 1,
-    title: "متجر أزياء راقية",
-    category: "مواقع إلكترونية",
-    description: "متجر إلكتروني متكامل مع تجربة تسوق سلسة وتصميم عصري يعكس هوية البراند",
-    fullDescription: "صممنا وطورنا متجر إلكتروني متكامل لبراند أزياء راقية. المتجر يتميز بتجربة مستخدم سلسة، نظام دفع آمن، وتصميم يعكس فخامة البراند.",
+    title: "E-commerce Platform - Fashion Brand",
+    category: "Website Development",
+    description: "4Creative بنت متجر إلكتروني متكامل مع UX سلس وتصميم عصري يعكس هوية الـ Brand",
+    fullDescription: "صممنا وطورنا E-commerce Platform متكامل لـ Fashion Brand. الموقع بيتميز بـ Smooth UX، نظام Payment آمن، وDesign يعكس فخامة الـ Brand.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
     color: "from-purple-500/20 to-pink-500/20",
     tools: ["React", "Node.js", "Stripe", "Figma"],
-    results: ["زيادة المبيعات 150%", "تحسين معدل التحويل 40%", "تقليل معدل الارتداد 60%"]
+    results: ["150% زيادة في Sales", "40% تحسين Conversion Rate", "60% تقليل Bounce Rate"]
   },
   {
     id: 2,
-    title: "حملة إطلاق منتج",
-    category: "حملات تسويقية",
-    description: "حملة رقمية متكاملة لإطلاق منتج جديد حققت نتائج استثنائية",
-    fullDescription: "خططنا ونفذنا حملة إطلاق متكاملة شملت السوشيال ميديا، الإعلانات المدفوعة، والتسويق بالمحتوى.",
+    title: "Product Launch Campaign",
+    category: "Marketing Campaigns",
+    description: "حملة Digital Marketing متكاملة لإطلاق منتج جديد حققت Results استثنائية",
+    fullDescription: "4Creative خططت ونفذت Launch Campaign متكاملة شملت Social Media، Paid Ads، وContent Marketing.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
     color: "from-blue-500/20 to-cyan-500/20",
     tools: ["Meta Ads", "Google Ads", "Analytics", "Hootsuite"],
-    results: ["وصول لـ 2 مليون شخص", "100,000 تفاعل", "ROI 300%"]
+    results: ["2 Million Reach", "100K+ Engagement", "300% ROI"]
   },
   {
     id: 3,
-    title: "فيديو موشن جرافيك",
-    category: "فيديوهات",
-    description: "فيديو ترويجي بتقنية الموشن جرافيك يشرح خدمات الشركة",
-    fullDescription: "أنتجنا فيديو موشن جرافيك احترافي يشرح خدمات الشركة بطريقة جذابة ومبسطة.",
+    title: "Explainer Motion Graphics",
+    category: "Video Production",
+    description: "4Creative أنتجت فيديو Motion Graphics يشرح خدمات الشركة بطريقة Creative",
+    fullDescription: "أنتجنا Motion Graphics Video احترافي يشرح خدمات الشركة بطريقة جذابة وSimplified.",
     image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&h=600&fit=crop",
     color: "from-orange-500/20 to-red-500/20",
     tools: ["After Effects", "Premiere Pro", "Illustrator"],
-    results: ["مليون مشاهدة", "معدل مشاهدة 85%", "زيادة الاستفسارات 200%"]
+    results: ["1M+ Views", "85% Watch Rate", "200% Increase in Inquiries"]
   },
   {
     id: 4,
-    title: "هوية مطعم فاخر",
-    category: "تصميمات",
-    description: "تصميم هوية بصرية متكاملة لمطعم راقي تعكس الفخامة",
-    fullDescription: "صممنا هوية بصرية متكاملة تشمل الشعار، الألوان، الخطوط، والتطبيقات المختلفة.",
+    title: "Restaurant Brand Identity",
+    category: "Branding",
+    description: "4Creative صممت Visual Identity متكاملة لمطعم راقي تعكس الـ Premium Feel",
+    fullDescription: "صممنا Brand Identity متكاملة تشمل Logo، Colors، Typography، والتطبيقات المختلفة.",
     image: "https://images.unsplash.com/photo-1634942537034-2531766767d1?w=800&h=600&fit=crop",
     color: "from-green-500/20 to-emerald-500/20",
     tools: ["Illustrator", "Photoshop", "Figma"],
-    results: ["هوية متكاملة", "زيادة التعرف على البراند", "تصميمات قابلة للتطوير"]
+    results: ["Full Brand Identity", "Increased Brand Recognition", "Scalable Design System"]
   },
   {
     id: 5,
-    title: "منصة تعليمية",
-    category: "مواقع إلكترونية",
-    description: "منصة تعليمية تفاعلية مع نظام إدارة محتوى متكامل",
-    fullDescription: "طورنا منصة تعليمية متكاملة تشمل نظام كورسات، اختبارات، وشهادات إلكترونية.",
+    title: "Educational Platform",
+    category: "Website Development",
+    description: "منصة تعليمية تفاعلية مع CMS متكامل بنتها 4Creative",
+    fullDescription: "طورنا E-learning Platform متكاملة تشمل Course System، Quizzes، وDigital Certificates.",
     image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop",
     color: "from-violet-500/20 to-purple-500/20",
     tools: ["React", "Node.js", "MongoDB", "AWS"],
-    results: ["10,000 مستخدم نشط", "500 كورس", "معدل إكمال 75%"]
+    results: ["10K Active Users", "500+ Courses", "75% Completion Rate"]
   },
   {
     id: 6,
-    title: "حملة رمضان",
-    category: "حملات تسويقية",
-    description: "حملة موسمية ناجحة حققت نتائج استثنائية في رمضان",
-    fullDescription: "خططنا حملة رمضانية متكاملة استهدفت المشاعر والقيم الرمضانية.",
+    title: "Ramadan Marketing Campaign",
+    category: "Marketing Campaigns",
+    description: "4Creative نفذت Seasonal Campaign ناجحة حققت أعلى Sales في رمضان",
+    fullDescription: "خططنا Ramadan Campaign متكاملة استهدفت المشاعر والقيم الرمضانية.",
     image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop",
     color: "from-amber-500/20 to-yellow-500/20",
-    tools: ["Meta Ads", "TikTok", "Influencers"],
-    results: ["وصول 5 مليون", "engagement rate 8%", "أعلى مبيعات موسمية"]
+    tools: ["Meta Ads", "TikTok", "Influencer Marketing"],
+    results: ["5M Reach", "8% Engagement Rate", "Highest Seasonal Sales"]
   },
   {
     id: 7,
-    title: "تطبيق توصيل",
-    category: "مواقع إلكترونية",
-    description: "تطبيق توصيل طلبات مع لوحة تحكم متكاملة",
-    fullDescription: "طورنا تطبيق توصيل متكامل مع تتبع الطلبات ولوحة تحكم للإدارة.",
+    title: "Delivery App",
+    category: "Website Development",
+    description: "4Creative طورت تطبيق توصيل مع Dashboard متكامل",
+    fullDescription: "طورنا Delivery App متكامل مع Order Tracking وAdmin Dashboard.",
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
     color: "from-red-500/20 to-orange-500/20",
     tools: ["React Native", "Firebase", "Google Maps"],
-    results: ["50,000 تحميل", "تقييم 4.8 نجوم", "زمن توصيل أسرع 30%"]
+    results: ["50K Downloads", "4.8 Star Rating", "30% Faster Delivery"]
   },
   {
     id: 8,
-    title: "فيديو دعائي",
-    category: "فيديوهات",
-    description: "فيديو دعائي سينمائي لعلامة تجارية كبرى",
-    fullDescription: "أنتجنا فيديو دعائي بجودة سينمائية عالية يروي قصة البراند.",
+    title: "Cinematic Brand Video",
+    category: "Video Production",
+    description: "4Creative أنتجت Brand Video سينمائي لعلامة تجارية كبرى",
+    fullDescription: "أنتجنا Cinematic Brand Video بجودة عالية يروي قصة الـ Brand.",
     image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&h=600&fit=crop",
     color: "from-indigo-500/20 to-blue-500/20",
     tools: ["Premiere Pro", "DaVinci Resolve", "Cinema Camera"],
-    results: ["جائزة أفضل إعلان", "viral على السوشيال", "زيادة الوعي 400%"]
+    results: ["Best Ad Award", "Viral on Social Media", "400% Brand Awareness Increase"]
   },
   {
     id: 9,
-    title: "براندينج شركة تقنية",
-    category: "تصميمات",
-    description: "هوية بصرية عصرية لشركة تقنية ناشئة",
-    fullDescription: "صممنا هوية بصرية تعكس الابتكار والتكنولوجيا المتقدمة.",
+    title: "Tech Startup Branding",
+    category: "Branding",
+    description: "4Creative صممت هوية بصرية عصرية لـ Tech Startup",
+    fullDescription: "صممنا Visual Identity تعكس Innovation والتكنولوجيا المتقدمة.",
     image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop",
     color: "from-cyan-500/20 to-teal-500/20",
     tools: ["Illustrator", "Figma", "After Effects"],
-    results: ["هوية متكاملة", "brand guidelines", "تطبيقات متعددة"]
+    results: ["Complete Brand Identity", "Brand Guidelines", "Multi-platform Applications"]
   }
 ];
 
@@ -145,15 +145,15 @@ const PortfolioPage = () => {
             transition={{ duration: 0.8 }}
           >
             <span className="inline-block text-primary font-bold text-lg mb-4">
-              أعمالنا
+              4Creative Portfolio
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6">
-              <span className="block">مشاريع</span>
+              <span className="block">Projects</span>
               <span className="block gradient-text">نفتخر بيها</span>
             </h1>
             <p className="text-xl text-muted-foreground">
-              دي مجموعة من أعمالنا اللي بتعكس إبداعنا وجودة شغلنا. 
-              كل مشروع له قصة نجاح خاصة بيه.
+              دي مجموعة من أعمال 4Creative اللي بتعكس إبداعنا وجودة شغلنا. 
+              كل Project له Success Story خاصة بيه.
             </p>
           </motion.div>
         </div>
@@ -323,10 +323,10 @@ const PortfolioPage = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10" />
             <div className="relative z-10">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                عايز مشروعك يبقى هنا؟
+                عايز مشروعك يبقى في الـ Portfolio؟
               </h2>
               <p className="text-xl text-muted-foreground mb-8">
-                خلينا نشتغل مع بعض ونحول فكرتك لمشروع ناجح
+                خلي 4Creative تحول فكرتك لـ Success Story جديدة
               </p>
               <motion.button
                 onClick={() => navigate("/start-project")}
@@ -334,7 +334,7 @@ const PortfolioPage = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                ابدأ مشروعك
+                ابدأ مشروعك مع 4Creative
               </motion.button>
             </div>
           </motion.div>
