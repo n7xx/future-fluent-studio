@@ -1,11 +1,10 @@
 import { useRef, useMemo, useState, useEffect, forwardRef, lazy, Suspense } from "react";
-import type { Points as PointsType } from "three";
-
-// Lazy load Three.js components for better initial load performance
-const ThreeCanvas = lazy(() => import("@react-three/fiber").then(mod => ({ default: mod.Canvas })));
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Points, PointMaterial } from "@react-three/drei";
+import * as THREE from "three";
 
 function ParticleField() {
-  const ref = useRef<PointsType>(null);
+  const ref = useRef<THREE.Points>(null);
   
   // Reduced particle count for better performance
   const particlesCount = 800;
@@ -21,14 +20,7 @@ function ParticleField() {
     return positions;
   }, []);
 
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const { useFrame } = require("@react-three/fiber");
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const { Points, PointMaterial } = require("@react-three/drei");
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const THREE = require("three");
-
-  useFrame((state: { clock: { elapsedTime: number } }) => {
+  useFrame((state) => {
     if (ref.current) {
       ref.current.rotation.x = state.clock.elapsedTime * 0.015;
       ref.current.rotation.y = state.clock.elapsedTime * 0.02;
@@ -49,15 +41,6 @@ function ParticleField() {
   );
 }
 
-function Scene() {
-  return (
-    <>
-      <ambientLight intensity={0.3} />
-      <ParticleField />
-    </>
-  );
-}
-
 const Background3D = forwardRef<HTMLDivElement>((_, ref) => {
   const [shouldRender, setShouldRender] = useState(false);
   const [isReducedMotion, setIsReducedMotion] = useState(false);
@@ -72,12 +55,12 @@ const Background3D = forwardRef<HTMLDivElement>((_, ref) => {
       if (!mediaQuery.matches) {
         setShouldRender(true);
       }
-    }, 1500);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
 
-  // Don't render 3D for users who prefer reduced motion
+  // Don't render 3D for users who prefer reduced motion or before timeout
   if (isReducedMotion || !shouldRender) {
     return (
       <div 
@@ -93,28 +76,19 @@ const Background3D = forwardRef<HTMLDivElement>((_, ref) => {
 
   return (
     <div ref={ref} className="fixed inset-0 z-0 pointer-events-none" aria-hidden="true">
-      <Suspense fallback={
-        <div 
-          className="w-full h-full"
-          style={{
-            background: "radial-gradient(ellipse at center, hsla(262, 83%, 58%, 0.1) 0%, transparent 70%)",
-          }}
-        />
-      }>
-        <ThreeCanvas
-          camera={{ position: [0, 0, 5], fov: 75 }}
-          style={{ background: "transparent" }}
-          gl={{ 
-            alpha: true, 
-            antialias: false,
-            powerPreference: "low-power",
-          }}
-          dpr={[1, 1.5]}
-          frameloop="demand"
-        >
-          <Scene />
-        </ThreeCanvas>
-      </Suspense>
+      <Canvas
+        camera={{ position: [0, 0, 5], fov: 75 }}
+        style={{ background: "transparent" }}
+        gl={{ 
+          alpha: true, 
+          antialias: false,
+          powerPreference: "low-power",
+        }}
+        dpr={[1, 1.5]}
+      >
+        <ambientLight intensity={0.3} />
+        <ParticleField />
+      </Canvas>
     </div>
   );
 });
