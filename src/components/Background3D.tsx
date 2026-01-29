@@ -1,4 +1,4 @@
-import { useRef, useMemo, forwardRef, useState, useEffect } from "react";
+import { useRef, useMemo, forwardRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial } from "@react-three/drei";
 import * as THREE from "three";
@@ -6,8 +6,7 @@ import * as THREE from "three";
 function ParticleField() {
   const ref = useRef<THREE.Points>(null);
   
-  // Reduced particles for better performance
-  const particlesCount = 400;
+  const particlesCount = 800;
   
   const positions = useMemo(() => {
     const positions = new Float32Array(particlesCount * 3);
@@ -22,8 +21,8 @@ function ParticleField() {
 
   useFrame((state) => {
     if (ref.current) {
-      ref.current.rotation.x = state.clock.elapsedTime * 0.015;
-      ref.current.rotation.y = state.clock.elapsedTime * 0.02;
+      ref.current.rotation.x = state.clock.elapsedTime * 0.02;
+      ref.current.rotation.y = state.clock.elapsedTime * 0.03;
     }
   });
 
@@ -32,7 +31,7 @@ function ParticleField() {
       <PointMaterial
         transparent
         color="#a855f7"
-        size={0.03}
+        size={0.02}
         sizeAttenuation={true}
         depthWrite={false}
         blending={THREE.AdditiveBlending}
@@ -41,44 +40,63 @@ function ParticleField() {
   );
 }
 
+function GlowingSphere() {
+  const meshRef = useRef<THREE.Mesh>(null);
+  
+  useFrame((state) => {
+    if (meshRef.current) {
+      meshRef.current.position.x = Math.sin(state.clock.elapsedTime * 0.5) * 2;
+      meshRef.current.position.y = Math.cos(state.clock.elapsedTime * 0.3) * 1.5;
+    }
+  });
+
+  return (
+    <mesh ref={meshRef} position={[0, 0, -5]}>
+      <sphereGeometry args={[1.5, 32, 32]} />
+      <meshBasicMaterial color="#6b21a8" transparent opacity={0.15} />
+    </mesh>
+  );
+}
+
+function FloatingRings() {
+  const ring1Ref = useRef<THREE.Mesh>(null);
+  const ring2Ref = useRef<THREE.Mesh>(null);
+
+  useFrame((state) => {
+    if (ring1Ref.current && ring2Ref.current) {
+      ring1Ref.current.rotation.x = state.clock.elapsedTime * 0.1;
+      ring1Ref.current.rotation.y = state.clock.elapsedTime * 0.15;
+      ring2Ref.current.rotation.x = state.clock.elapsedTime * 0.08;
+      ring2Ref.current.rotation.z = state.clock.elapsedTime * 0.12;
+    }
+  });
+
+  return (
+    <>
+      <mesh ref={ring1Ref} position={[-3, 1, -8]}>
+        <torusGeometry args={[2, 0.05, 16, 100]} />
+        <meshBasicMaterial color="#06b6d4" transparent opacity={0.3} />
+      </mesh>
+      <mesh ref={ring2Ref} position={[3, -1, -6]}>
+        <torusGeometry args={[1.5, 0.03, 16, 100]} />
+        <meshBasicMaterial color="#a855f7" transparent opacity={0.4} />
+      </mesh>
+    </>
+  );
+}
+
 const Background3D = forwardRef<HTMLDivElement>((_, ref) => {
-  const [shouldRender, setShouldRender] = useState(false);
-
-  // Defer 3D rendering until after main content is painted
-  useEffect(() => {
-    const timer = requestIdleCallback 
-      ? requestIdleCallback(() => setShouldRender(true), { timeout: 2000 })
-      : setTimeout(() => setShouldRender(true), 100);
-    
-    return () => {
-      if (requestIdleCallback) {
-        cancelIdleCallback(timer as number);
-      } else {
-        clearTimeout(timer as unknown as number);
-      }
-    };
-  }, []);
-
-  if (!shouldRender) {
-    return <div ref={ref} className="fixed inset-0 z-0 pointer-events-none" aria-hidden="true" />;
-  }
-
   return (
     <div ref={ref} className="fixed inset-0 z-0 pointer-events-none" aria-hidden="true">
       <Canvas
         camera={{ position: [0, 0, 5], fov: 75 }}
         style={{ background: "transparent" }}
-        gl={{ 
-          alpha: true, 
-          antialias: false,
-          powerPreference: "low-power",
-          stencil: false,
-          depth: false,
-        }}
-        dpr={[1, 1.5]}
-        frameloop="demand"
+        gl={{ alpha: true, antialias: true }}
       >
+        <ambientLight intensity={0.5} />
         <ParticleField />
+        <GlowingSphere />
+        <FloatingRings />
       </Canvas>
     </div>
   );
