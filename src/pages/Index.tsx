@@ -1,20 +1,26 @@
-import { memo } from "react";
+import { lazy, Suspense, memo } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import ServicesSection from "@/components/ServicesSection";
-import PortfolioSection from "@/components/PortfolioSection";
-import ProcessSection from "@/components/ProcessSection";
-import WhyUsSection from "@/components/WhyUsSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import FAQSection from "@/components/FAQSection";
-import CTASection from "@/components/CTASection";
-import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import Background3D from "@/components/Background3D";
-import ParallaxWrapper from "@/components/ParallaxWrapper";
+
+// Lazy load below-fold sections
+const AboutSection = lazy(() => import("@/components/AboutSection"));
+const ServicesSection = lazy(() => import("@/components/ServicesSection"));
+const PortfolioSection = lazy(() => import("@/components/PortfolioSection"));
+const ProcessSection = lazy(() => import("@/components/ProcessSection"));
+const WhyUsSection = lazy(() => import("@/components/WhyUsSection"));
+const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
+const FAQSection = lazy(() => import("@/components/FAQSection"));
+const CTASection = lazy(() => import("@/components/CTASection"));
+const ContactSection = lazy(() => import("@/components/ContactSection"));
 
 const MemoizedBackground = memo(Background3D);
+
+// Simple loading placeholder
+const SectionLoader = () => (
+  <div className="min-h-[200px]" />
+);
 
 const Index = () => {
   return (
@@ -22,23 +28,33 @@ const Index = () => {
       <MemoizedBackground />
       <Navbar />
       <HeroSection />
-      <ParallaxWrapper offset={30}>
+      <Suspense fallback={<SectionLoader />}>
         <AboutSection />
-      </ParallaxWrapper>
-      <ServicesSection />
-      <ParallaxWrapper offset={40}>
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <ServicesSection />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
         <PortfolioSection />
-      </ParallaxWrapper>
-      <ProcessSection />
-      <ParallaxWrapper offset={25}>
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <ProcessSection />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
         <WhyUsSection />
-      </ParallaxWrapper>
-      <TestimonialsSection />
-      <ParallaxWrapper offset={35}>
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <TestimonialsSection />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
         <FAQSection />
-      </ParallaxWrapper>
-      <CTASection />
-      <ContactSection />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <CTASection />
+      </Suspense>
+      <Suspense fallback={<SectionLoader />}>
+        <ContactSection />
+      </Suspense>
       <Footer />
     </div>
   );
