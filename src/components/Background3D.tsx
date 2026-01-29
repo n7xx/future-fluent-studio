@@ -6,7 +6,7 @@ import * as THREE from "three";
 function ParticleField() {
   const ref = useRef<THREE.Points>(null);
   
-  const particlesCount = 2000;
+  const particlesCount = 800;
   
   const positions = useMemo(() => {
     const positions = new Float32Array(particlesCount * 3);

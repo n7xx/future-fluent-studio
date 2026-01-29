@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Target, Eye, Zap, Users, Award, Heart, Lightbulb, TrendingUp } from "lucide-react";
+import { Target, Eye, Zap, Award, Heart, Lightbulb, TrendingUp } from "lucide-react";
 import Layout from "@/components/Layout";
 
 const values = [
@@ -34,40 +34,16 @@ const stats = [
   { number: "15+", label: "فريق متخصص" },
 ];
 
-const team = [
-  {
-    name: "أحمد محمد",
-    role: "Founder & CEO",
-    description: "خبرة +10 سنين في Digital Marketing والـ Brand Strategy",
-  },
-  {
-    name: "سارة أحمد",
-    role: "Creative Director",
-    description: "بتحول الأفكار لـ Visual Stories تفضل في الذاكرة",
-  },
-  {
-    name: "محمد علي",
-    role: "Tech Lead",
-    description: "متخصص في Web Development والـ Digital Solutions",
-  },
-  {
-    name: "نورهان خالد",
-    role: "Marketing Manager",
-    description: "خبيرة في الـ Social Media والـ Performance Marketing",
-  },
-];
 
 const AboutPage = () => {
   const heroRef = useRef(null);
   const storyRef = useRef(null);
   const valuesRef = useRef(null);
-  const teamRef = useRef(null);
   const statsRef = useRef(null);
 
   const isHeroInView = useInView(heroRef, { once: true });
   const isStoryInView = useInView(storyRef, { once: true, margin: "-100px" });
   const isValuesInView = useInView(valuesRef, { once: true, margin: "-100px" });
-  const isTeamInView = useInView(teamRef, { once: true, margin: "-100px" });
   const isStatsInView = useInView(statsRef, { once: true, margin: "-100px" });
 
   return (
@@ -233,47 +209,6 @@ const AboutPage = () => {
                 </div>
                 <h3 className="text-xl font-bold mb-2">{value.title}</h3>
                 <p className="text-sm text-muted-foreground">{value.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section ref={teamRef} className="py-20 relative">
-        <div className="absolute inset-0 bg-grid opacity-30" />
-        <div className="container mx-auto px-6 relative z-10">
-          <motion.div
-            className="text-center max-w-3xl mx-auto mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isTeamInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-          >
-            <span className="inline-block text-primary font-bold text-lg mb-4">فريقنا</span>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              الناس ورا النجاح
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              فريق متكامل من المحترفين بيشتغلوا كأسرة واحدة عشان نجاحك
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((member, index) => (
-              <motion.div
-                key={index}
-                className="glass-card p-6 text-center group"
-                initial={{ opacity: 0, y: 30 }}
-                animate={isTeamInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.2 + index * 0.1, duration: 0.6 }}
-                whileHover={{ y: -5 }}
-              >
-                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-10 h-10 text-primary" />
-                </div>
-                <h3 className="text-xl font-bold mb-1">{member.name}</h3>
-                <div className="text-primary font-medium text-sm mb-3">{member.role}</div>
-                <p className="text-sm text-muted-foreground">{member.description}</p>
               </motion.div>
             ))}
           </div>
