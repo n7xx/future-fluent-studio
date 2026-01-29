@@ -7,11 +7,10 @@ import logoLight from "@/assets/logo-light.png";
 
 const navItems = [
   { label: "الرئيسية", href: "/", isPage: true },
-  { label: "من نحن", href: "/#about", isPage: false },
+  { label: "من نحن", href: "/about", isPage: true },
   { label: "خدماتنا", href: "/services", isPage: true },
   { label: "أعمالنا", href: "/portfolio", isPage: true },
   { label: "المدونة", href: "/blog", isPage: true },
-  { label: "منهجيتنا", href: "/#process", isPage: false },
   { label: "تواصل معنا", href: "/#contact", isPage: false },
 ];
 
@@ -49,7 +48,19 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
     
     if (item.isPage) {
-      navigate(item.href);
+      // For home page, always scroll to top
+      if (item.href === '/') {
+        if (location.pathname === '/') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          navigate('/');
+          setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }, 100);
+        }
+      } else {
+        navigate(item.href);
+      }
     } else {
       // Handle hash navigation
       const [path, hash] = item.href.split('#');

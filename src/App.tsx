@@ -13,8 +13,8 @@ import PortfolioPage from "./pages/PortfolioPage";
 import ServicesPage from "./pages/ServicesPage";
 import BlogPage from "./pages/BlogPage";
 import BlogPostPage from "./pages/BlogPostPage";
+import AboutPage from "./pages/AboutPage";
 import LoadingAnimation from "./components/LoadingAnimation";
-import CustomCursor from "./components/CustomCursor";
 
 const queryClient = new QueryClient();
 
@@ -70,6 +70,7 @@ const AnimatedRoutes = memo(() => {
         >
           <Routes location={location}>
             <Route path="/" element={<Index />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="/start-project" element={<StartProjectPage />} />
             <Route path="/portfolio" element={<PortfolioPage />} />
             <Route path="/services" element={<ServicesPage />} />
@@ -93,7 +94,6 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <CustomCursor />
         {isLoading && <LoadingAnimation onComplete={() => setIsLoading(false)} />}
         <Toaster />
         <Sonner />
