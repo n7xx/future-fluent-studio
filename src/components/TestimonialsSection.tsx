@@ -37,7 +37,7 @@ const TestimonialsSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-32 relative overflow-hidden" ref={ref}>
+    <section className="py-32 relative overflow-hidden" ref={ref} aria-labelledby="testimonials-heading">
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <motion.div
@@ -49,7 +49,7 @@ const TestimonialsSection = () => {
           <span className="inline-block text-primary font-bold text-lg mb-4">
             Client Reviews
           </span>
-          <h2 className="section-title">
+          <h2 id="testimonials-heading" className="section-title">
             براندات اتحولت
             <span className="block gradient-text">مع 4Creative</span>
           </h2>
@@ -58,42 +58,41 @@ const TestimonialsSection = () => {
         {/* Testimonials */}
         <div className="grid md:grid-cols-3 gap-8 mb-20">
           {testimonials.map((testimonial, index) => (
-            <motion.div
+            <motion.article
               key={index}
               className="glass-card p-8 relative"
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              whileHover={{ y: -10 }}
             >
               {/* Quote Icon */}
-              <Quote className="w-12 h-12 text-primary/20 absolute top-6 left-6" />
+              <Quote className="w-12 h-12 text-primary/20 absolute top-6 left-6" aria-hidden="true" />
               
               {/* Rating */}
-              <div className="flex gap-1 mb-6">
+              <div className="flex gap-1 mb-6" role="img" aria-label={`تقييم ${testimonial.rating} من 5 نجوم`}>
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-primary text-primary" />
+                  <Star key={i} className="w-5 h-5 fill-primary text-primary" aria-hidden="true" />
                 ))}
               </div>
               
               {/* Content */}
-              <p className="text-lg text-foreground/90 mb-8 leading-relaxed">
+              <blockquote className="text-lg text-foreground/90 mb-8 leading-relaxed">
                 "{testimonial.content}"
-              </p>
+              </blockquote>
               
               {/* Author */}
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-xl font-bold text-white">
+                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-xl font-bold text-primary-foreground" aria-hidden="true">
                   {testimonial.name[0]}
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg">{testimonial.name}</h4>
+                  <cite className="not-italic font-bold text-lg block">{testimonial.name}</cite>
                   <p className="text-sm text-muted-foreground">
                     {testimonial.role} - {testimonial.company}
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
 
@@ -109,18 +108,14 @@ const TestimonialsSection = () => {
           
           <div className="flex flex-wrap justify-center gap-8">
             {clients.map((client, index) => (
-              <motion.div
+              <div
                 key={index}
                 className="glass px-8 py-4 rounded-xl"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ delay: 0.7 + index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
               >
                 <span className="text-muted-foreground font-medium">
                   {client}
                 </span>
-              </motion.div>
+              </div>
             ))}
           </div>
         </motion.div>

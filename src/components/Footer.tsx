@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
@@ -49,11 +48,10 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           {/* Logo & Description */}
           <div className="md:col-span-2">
-            <motion.img
+            <img
               src={logo}
               alt="4Creative - Digital Marketing Agency"
               className="h-16 w-auto mb-6 cursor-pointer"
-              whileHover={{ scale: 1.05 }}
               onClick={() => navigate("/")}
               width={64}
               height={64}
