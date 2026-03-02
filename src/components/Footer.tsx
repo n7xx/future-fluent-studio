@@ -14,7 +14,7 @@ const Footer = () => {
       { label: "Branding & Design", href: "/services/design-branding" },
     ],
     company: [
-      { label: "من نحن", href: "/#about" },
+      { label: "من نحن", href: "/about" },
       { label: "أعمالنا", href: "/portfolio" },
       { label: "خدماتنا", href: "/services" },
       { label: "المدونة", href: "/blog" },

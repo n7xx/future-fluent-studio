@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useMemo } from "react";
 import { Target, Eye, Zap, Award, Heart, Lightbulb, TrendingUp } from "lucide-react";
 import Layout from "@/components/Layout";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { Helmet } from "react-helmet-async";
 
 const values = [
   {
@@ -34,8 +36,8 @@ const stats = [
   { number: "15+", label: "فريق متخصص" },
 ];
 
-
 const AboutPage = () => {
+  const prefersReducedMotion = useReducedMotion();
   const heroRef = useRef(null);
   const storyRef = useRef(null);
   const valuesRef = useRef(null);
@@ -46,23 +48,63 @@ const AboutPage = () => {
   const isValuesInView = useInView(valuesRef, { once: true, margin: "-100px" });
   const isStatsInView = useInView(statsRef, { once: true, margin: "-100px" });
 
+  const anim = useMemo(() => {
+    if (prefersReducedMotion) {
+      return {
+        initial: {},
+        fadeIn: { opacity: 1 },
+        slideRight: { opacity: 1, x: 0 },
+        slideLeft: { opacity: 1, x: 0 },
+        transition: { duration: 0 },
+      };
+    }
+    return {
+      initial: { opacity: 0, y: 30 },
+      fadeIn: { opacity: 1, y: 0 },
+      slideRight: { opacity: 1, x: 0 },
+      slideLeft: { opacity: 1, x: 0 },
+      transition: { duration: 0.8 },
+    };
+  }, [prefersReducedMotion]);
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "4Creative",
+    "url": "https://4creative.agency",
+    "description": "Creative Agency مصرية متخصصة في Digital Marketing، Website Development، Branding، وContent Creation",
+    "foundingDate": "2020",
+    "areaServed": "Egypt",
+    "numberOfEmployees": { "@type": "QuantitativeValue", "minValue": 15 },
+  };
+
   return (
     <Layout>
+      <Helmet>
+        <title>من نحن | 4Creative - Creative Agency في مصر</title>
+        <meta name="description" content="تعرف على 4Creative - Creative Agency مصرية متخصصة في Digital Marketing، Website Development، Branding وContent Creation. 150+ مشروع ناجح و50+ عميل سعيد." />
+        <link rel="canonical" href="https://4creative.agency/about" />
+        <meta property="og:title" content="من نحن | 4Creative - Creative Agency في مصر" />
+        <meta property="og:description" content="تعرف على 4Creative - شريكك في النجاح الرقمي. بنبني براندات تفضل في دماغ الناس!" />
+        <meta property="og:url" content="https://4creative.agency/about" />
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      </Helmet>
+
       {/* Hero Section */}
       <section ref={heroRef} className="pt-32 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-grid opacity-30" />
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
             className="text-center max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
+            initial={prefersReducedMotion ? {} : { opacity: 0, y: 30 }}
+            animate={isHeroInView ? anim.fadeIn : {}}
+            transition={anim.transition}
           >
             <motion.span
               className="inline-block text-primary font-bold text-lg mb-4"
-              initial={{ opacity: 0 }}
+              initial={prefersReducedMotion ? {} : { opacity: 0 }}
               animate={isHeroInView ? { opacity: 1 } : {}}
-              transition={{ delay: 0.2 }}
+              transition={prefersReducedMotion ? { duration: 0 } : { delay: 0.2 }}
             >
               تعرف علينا
             </motion.span>
@@ -84,9 +126,9 @@ const AboutPage = () => {
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={isStoryInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8 }}
+              initial={prefersReducedMotion ? {} : { opacity: 0, x: 50 }}
+              animate={isStoryInView ? anim.slideRight : {}}
+              transition={anim.transition}
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 قصتنا
@@ -111,9 +153,9 @@ const AboutPage = () => {
 
             <motion.div
               className="relative"
-              initial={{ opacity: 0, x: -50 }}
-              animate={isStoryInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              initial={prefersReducedMotion ? {} : { opacity: 0, x: -50 }}
+              animate={isStoryInView ? anim.slideLeft : {}}
+              transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.8, delay: 0.2 }}
             >
               <div className="glass-card p-8 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-full blur-3xl" />
@@ -162,9 +204,9 @@ const AboutPage = () => {
               <motion.div
                 key={index}
                 className="text-center"
-                initial={{ opacity: 0, y: 30 }}
+                initial={prefersReducedMotion ? {} : { opacity: 0, y: 30 }}
                 animate={isStatsInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
+                transition={prefersReducedMotion ? { duration: 0 } : { delay: index * 0.1, duration: 0.6 }}
               >
                 <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">
                   {stat.number}
@@ -181,9 +223,9 @@ const AboutPage = () => {
         <div className="container mx-auto px-6">
           <motion.div
             className="text-center max-w-3xl mx-auto mb-16"
-            initial={{ opacity: 0, y: 30 }}
+            initial={prefersReducedMotion ? {} : { opacity: 0, y: 30 }}
             animate={isValuesInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
+            transition={anim.transition}
           >
             <span className="inline-block text-primary font-bold text-lg mb-4">قيمنا</span>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -199,10 +241,10 @@ const AboutPage = () => {
               <motion.div
                 key={index}
                 className="glass-card p-6 text-center group"
-                initial={{ opacity: 0, y: 30 }}
+                initial={prefersReducedMotion ? {} : { opacity: 0, y: 30 }}
                 animate={isValuesInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.2 + index * 0.1, duration: 0.6 }}
-                whileHover={{ y: -5 }}
+                transition={prefersReducedMotion ? { duration: 0 } : { delay: 0.2 + index * 0.1, duration: 0.6 }}
+                whileHover={prefersReducedMotion ? {} : { y: -5 }}
               >
                 <div className="w-16 h-16 rounded-xl bg-primary/20 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/30 transition-colors">
                   <value.icon className="w-8 h-8 text-primary" />
@@ -220,10 +262,10 @@ const AboutPage = () => {
         <div className="container mx-auto px-6">
           <motion.div
             className="glass-card p-12 text-center relative overflow-hidden"
-            initial={{ opacity: 0, y: 30 }}
+            initial={prefersReducedMotion ? {} : { opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={anim.transition}
           >
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent/20 rounded-full blur-3xl" />
@@ -238,8 +280,8 @@ const AboutPage = () => {
               <motion.a
                 href="/start-project"
                 className="btn-primary inline-flex"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
+                whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
               >
                 ابدأ مشروعك دلوقتي
               </motion.a>
