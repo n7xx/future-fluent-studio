@@ -63,9 +63,9 @@ const ServicesSection = () => {
   const navigate = useNavigate();
 
   return (
-    <section id="services" className="py-32 relative overflow-hidden" ref={ref}>
+    <section id="services" className="py-32 relative overflow-hidden" ref={ref} aria-labelledby="services-heading">
       {/* Background */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0" aria-hidden="true">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
         <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
       </div>
@@ -81,7 +81,7 @@ const ServicesSection = () => {
           <span className="inline-block text-primary font-bold text-lg mb-4">
             خدمات 4Creative
           </span>
-          <h2 className="section-title">
+          <h2 id="services-heading" className="section-title">
             Full-Service
             <span className="block gradient-text">Digital Agency</span>
           </h2>
@@ -93,23 +93,23 @@ const ServicesSection = () => {
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <motion.div
-              key={index}
+            <motion.article
+              key={service.id}
               className="service-card group cursor-pointer"
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -10 }}
               onClick={() => navigate(`/services/${service.id}`)}
+              role="link"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && navigate(`/services/${service.id}`)}
+              aria-label={`خدمة ${service.title} - ${service.description}`}
             >
               {/* Icon */}
               <div className="relative mb-6">
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/30 to-accent/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <service.icon className="w-8 h-8 text-primary" />
+                  <service.icon className="w-8 h-8 text-primary" aria-hidden="true" />
                 </div>
-                <motion.div
-                  className="absolute -inset-2 rounded-2xl bg-primary/10 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500"
-                />
               </div>
 
               {/* Content */}
@@ -121,23 +121,23 @@ const ServicesSection = () => {
               </p>
 
               {/* Features */}
-              <div className="flex flex-wrap gap-2 mb-6">
+              <ul className="flex flex-wrap gap-2 mb-6" aria-label={`مميزات ${service.title}`}>
                 {service.features.map((feature, i) => (
-                  <span
+                  <li
                     key={i}
                     className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary border border-primary/20"
                   >
                     {feature}
-                  </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
 
-              {/* Arrow - Always Visible */}
-              <div className="flex items-center gap-2 text-primary font-medium">
+              {/* Arrow */}
+              <div className="flex items-center gap-2 text-primary font-medium" aria-hidden="true">
                 <ArrowUpLeft className="w-5 h-5" />
                 <span>اكتشف المزيد</span>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
 

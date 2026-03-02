@@ -1,29 +1,17 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Sparkles, Rocket } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useMemo } from "react";
 
 const HeroSection = () => {
   const navigate = useNavigate();
 
-  // Reduce particles for better performance - memoized
-  const particles = useMemo(() => 
-    [...Array(8)].map((_, i) => ({
-      id: i,
-      left: `${(i * 12) + 5}%`,
-      top: `${(i * 11) + 10}%`,
-      duration: 4 + (i % 3),
-      delay: i * 0.3,
-    })), []
-  );
-
   return (
     <section
       id="home"
-      aria-label="الصفحة الرئيسية"
+      aria-labelledby="hero-heading"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-grid"
     >
-      {/* Background Effects - Reduced for performance */}
+      {/* Background Effects - CSS only, no JS animation */}
       <div className="absolute inset-0" aria-hidden="true">
         <div
           className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full opacity-20"
@@ -37,29 +25,6 @@ const HeroSection = () => {
             background: "radial-gradient(circle, hsl(187, 94%, 48%) 0%, transparent 70%)",
           }}
         />
-      </div>
-
-      {/* Floating particles - Reduced count and simplified */}
-      <div aria-hidden="true">
-        {particles.map((particle) => (
-          <motion.div
-            key={particle.id}
-            className="absolute w-1 h-1 rounded-full bg-primary/50"
-            style={{
-              left: particle.left,
-              top: particle.top,
-            }}
-            animate={{
-              y: [-10, 10],
-              opacity: [0.3, 0.7, 0.3],
-            }}
-            transition={{
-              duration: particle.duration,
-              repeat: Infinity,
-              delay: particle.delay,
-            }}
-          />
-        ))}
       </div>
 
       {/* Content */}
@@ -80,6 +45,7 @@ const HeroSection = () => {
 
           {/* Main Headline */}
           <motion.h1
+            id="hero-heading"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -144,27 +110,24 @@ const HeroSection = () => {
               { number: "+50", label: "براند اتحول معانا" },
               { number: "+5", label: "سنين في السوق المصري" },
             ].map((stat, index) => (
-              <motion.div
+              <div
                 key={index}
                 className="text-center"
-                whileHover={{ scale: 1.1 }}
                 role="listitem"
               >
                 <div className="text-3xl md:text-4xl font-black gradient-text mb-2" aria-label={stat.number}>
                   {stat.number}
                 </div>
                 <div className="text-sm text-muted-foreground">{stat.label}</div>
-              </motion.div>
+              </div>
             ))}
           </motion.div>
         </div>
       </main>
 
       {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
+      <div
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce"
         aria-hidden="true"
       >
         <a 
@@ -174,7 +137,7 @@ const HeroSection = () => {
         >
           <ArrowDown className="w-4 h-4 text-primary" />
         </a>
-      </motion.div>
+      </div>
     </section>
   );
 };

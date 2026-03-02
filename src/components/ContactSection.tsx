@@ -77,11 +77,11 @@ const ContactSection = () => {
   };
 
   const handleWhatsApp = () => {
-    window.open("https://wa.me/201000000000?text=مرحبا، عايز أبدأ مشروع جديد", "_blank");
+    window.open("https://wa.me/201000000000?text=مرحبا، عايز أبدأ مشروع جديد", "_blank", "noopener,noreferrer");
   };
 
   return (
-    <section id="contact" className="py-32 relative overflow-hidden" ref={ref}>
+    <section id="contact" className="py-32 relative overflow-hidden" ref={ref} aria-labelledby="contact-heading">
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <motion.div
@@ -93,7 +93,7 @@ const ContactSection = () => {
           <span className="inline-block text-primary font-bold text-lg mb-4">
             تواصل معنا
           </span>
-          <h2 className="section-title">
+          <h2 id="contact-heading" className="section-title">
             جاهز تبدأ مشروعك؟
             <span className="block gradient-text">خلينا نساعدك</span>
           </h2>
@@ -121,10 +121,9 @@ const ContactSection = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: 0.2 + index * 0.1 }}
-                  whileHover={{ y: -5 }}
                 >
                   <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
-                    <benefit.icon className="w-5 h-5 text-primary" />
+                    <benefit.icon className="w-5 h-5 text-primary" aria-hidden="true" />
                   </div>
                   <div>
                     <h3 className="font-bold text-sm">{benefit.title}</h3>
@@ -141,7 +140,7 @@ const ContactSection = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.5 }}
             >
-              {trustSignals.map((signal, index) => (
+              {trustSignals.map((signal) => (
                 <div key={signal.label} className="text-center">
                   <div className="text-2xl font-black gradient-text">{signal.number}</div>
                   <div className="text-xs text-muted-foreground">{signal.label}</div>
@@ -164,7 +163,7 @@ const ContactSection = () => {
                   "نتائج ملموسة تفرق مع مشروعك"
                 ].map((item, index) => (
                   <li key={index} className="flex items-center gap-2 text-muted-foreground text-sm">
-                    <div className="w-2 h-2 rounded-full bg-primary" />
+                    <div className="w-2 h-2 rounded-full bg-primary" aria-hidden="true" />
                     {item}
                   </li>
                 ))}
@@ -183,75 +182,110 @@ const ContactSection = () => {
             
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="contact-name" className="sr-only">اسمك</label>
+                  <Input
+                    id="contact-name"
+                    placeholder="اسمك"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    required
+                    className="bg-background/50"
+                    autoComplete="name"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="contact-phone" className="sr-only">رقم الموبايل</label>
+                  <Input
+                    id="contact-phone"
+                    placeholder="رقم الموبايل"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    required
+                    className="bg-background/50"
+                    autoComplete="tel"
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <label htmlFor="contact-email" className="sr-only">البريد الإلكتروني</label>
                 <Input
-                  placeholder="اسمك"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  id="contact-email"
+                  type="email"
+                  placeholder="البريد الإلكتروني"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   required
                   className="bg-background/50"
+                  autoComplete="email"
                 />
+              </div>
+              
+              <div>
+                <label htmlFor="contact-company" className="sr-only">اسم الشركة أو المشروع</label>
                 <Input
-                  placeholder="رقم الموبايل"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  id="contact-company"
+                  placeholder="اسم الشركة أو المشروع"
+                  value={formData.company}
+                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                  className="bg-background/50"
+                  autoComplete="organization"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="contact-service" className="sr-only">اختار الخدمة</label>
+                <select
+                  id="contact-service"
+                  value={formData.service}
+                  onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                  className="w-full p-3 rounded-lg bg-background/50 border border-border text-foreground"
                   required
+                  aria-label="اختار الخدمة المطلوبة"
+                >
+                  <option value="">اختار الخدمة</option>
+                  <option value="web">تطوير المواقع</option>
+                  <option value="marketing">التسويق الرقمي</option>
+                  <option value="content">صناعة المحتوى</option>
+                  <option value="video">المونتاج والموشن</option>
+                  <option value="design">التصميم والهوية</option>
+                  <option value="strategy">الاستراتيجية الرقمية</option>
+                </select>
+              </div>
+
+              <div>
+                <label htmlFor="contact-budget" className="sr-only">الميزانية التقريبية</label>
+                <select
+                  id="contact-budget"
+                  value={formData.budget}
+                  onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+                  className="w-full p-3 rounded-lg bg-background/50 border border-border text-foreground"
+                  aria-label="الميزانية التقريبية"
+                >
+                  <option value="">الميزانية التقريبية (اختياري)</option>
+                  <option value="small">أقل من 5,000 جنيه</option>
+                  <option value="medium">5,000 - 15,000 جنيه</option>
+                  <option value="large">15,000 - 50,000 جنيه</option>
+                  <option value="enterprise">أكثر من 50,000 جنيه</option>
+                </select>
+              </div>
+              
+              <div>
+                <label htmlFor="contact-message" className="sr-only">تفاصيل المشروع</label>
+                <Textarea
+                  id="contact-message"
+                  placeholder="احكيلنا عن مشروعك..."
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  rows={4}
                   className="bg-background/50"
                 />
               </div>
               
-              <Input
-                type="email"
-                placeholder="البريد الإلكتروني"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                required
-                className="bg-background/50"
-              />
-              
-              <Input
-                placeholder="اسم الشركة أو المشروع"
-                value={formData.company}
-                onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                className="bg-background/50"
-              />
-
-              <select
-                value={formData.service}
-                onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                className="w-full p-3 rounded-lg bg-background/50 border border-border text-foreground"
-                required
-              >
-                <option value="">اختار الخدمة</option>
-                <option value="web">تطوير المواقع</option>
-                <option value="marketing">التسويق الرقمي</option>
-                <option value="content">صناعة المحتوى</option>
-                <option value="video">المونتاج والموشن</option>
-                <option value="design">التصميم والهوية</option>
-                <option value="strategy">الاستراتيجية الرقمية</option>
-              </select>
-
-              <select
-                value={formData.budget}
-                onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                className="w-full p-3 rounded-lg bg-background/50 border border-border text-foreground"
-              >
-                <option value="">الميزانية التقريبية (اختياري)</option>
-                <option value="small">أقل من 5,000 جنيه</option>
-                <option value="medium">5,000 - 15,000 جنيه</option>
-                <option value="large">15,000 - 50,000 جنيه</option>
-                <option value="enterprise">أكثر من 50,000 جنيه</option>
-              </select>
-              
-              <Textarea
-                placeholder="احكيلنا عن مشروعك..."
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                rows={4}
-                className="bg-background/50"
-              />
-              
               <Button type="submit" className="w-full btn-primary">
-                <Send className="w-5 h-5 ml-2" />
+                <Send className="w-5 h-5 ml-2" aria-hidden="true" />
                 ابعت طلبك
               </Button>
             </form>
@@ -266,15 +300,15 @@ const ContactSection = () => {
                   onClick={handleWhatsApp}
                   className="flex-1 bg-green-600 hover:bg-green-700"
                 >
-                  <MessageCircle className="w-5 h-5 ml-2" />
+                  <MessageCircle className="w-5 h-5 ml-2" aria-hidden="true" />
                   واتساب
                 </Button>
                 <Button 
                   variant="outline"
                   className="flex-1"
-                  onClick={() => window.open("https://calendly.com", "_blank")}
+                  onClick={() => window.open("https://calendly.com", "_blank", "noopener,noreferrer")}
                 >
-                  <Calendar className="w-5 h-5 ml-2" />
+                  <Calendar className="w-5 h-5 ml-2" aria-hidden="true" />
                   احجز ميتينج
                 </Button>
               </div>

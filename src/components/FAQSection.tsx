@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Plus, Minus } from "lucide-react";
-import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const faqs = [
   {
@@ -59,15 +59,13 @@ const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-32 relative overflow-hidden" ref={ref}>
-      {/* JSON-LD Schema Markup */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+    <section id="faq" className="py-32 relative overflow-hidden" ref={ref} aria-labelledby="faq-heading">
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      </Helmet>
 
       {/* Background */}
-      <div className="absolute inset-0 bg-grid opacity-30" />
+      <div className="absolute inset-0 bg-grid opacity-30" aria-hidden="true" />
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
@@ -80,7 +78,7 @@ const FAQSection = () => {
           <span className="inline-block text-primary font-bold text-lg mb-4">
             FAQs
           </span>
-          <h2 className="section-title">
+          <h2 id="faq-heading" className="section-title">
             أسئلة شائعة
             <span className="block gradient-text">عن 4Creative</span>
           </h2>
@@ -90,7 +88,7 @@ const FAQSection = () => {
         </motion.div>
 
         {/* FAQ Items */}
-        <div className="max-w-3xl mx-auto space-y-4">
+        <div className="max-w-3xl mx-auto space-y-4" role="list">
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
@@ -98,38 +96,36 @@ const FAQSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              role="listitem"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 className="w-full p-6 flex items-center justify-between text-right hover:bg-primary/5 transition-colors"
+                aria-expanded={openIndex === index}
+                aria-controls={`faq-answer-${index}`}
               >
                 <span className="text-lg font-bold pr-4">{faq.question}</span>
-                <motion.div
-                  animate={{ rotate: openIndex === index ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="flex-shrink-0"
-                >
+                <span className="flex-shrink-0" aria-hidden="true">
                   {openIndex === index ? (
                     <Minus className="w-6 h-6 text-primary" />
                   ) : (
                     <Plus className="w-6 h-6 text-primary" />
                   )}
-                </motion.div>
+                </span>
               </button>
               
-              <motion.div
-                initial={false}
-                animate={{
-                  height: openIndex === index ? "auto" : 0,
-                  opacity: openIndex === index ? 1 : 0
-                }}
-                transition={{ duration: 0.3 }}
-                className="overflow-hidden"
+              <div
+                id={`faq-answer-${index}`}
+                role="region"
+                aria-labelledby={`faq-question-${index}`}
+                hidden={openIndex !== index}
               >
-                <div className="px-6 pb-6 text-muted-foreground leading-relaxed">
-                  {faq.answer}
-                </div>
-              </motion.div>
+                {openIndex === index && (
+                  <div className="px-6 pb-6 text-muted-foreground leading-relaxed">
+                    {faq.answer}
+                  </div>
+                )}
+              </div>
             </motion.div>
           ))}
         </div>
