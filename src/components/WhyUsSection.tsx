@@ -74,7 +74,7 @@ const WhyUsSection = () => {
           {reasons.map((reason, index) => (
             <motion.div
               key={index}
-              className={`glass-card p-8 text-center ${
+              className={`glass-card p-6 sm:p-8 text-center ${
                 index === 4 ? "lg:col-start-2" : ""
               }`}
               initial={{ opacity: 0, y: 40 }}

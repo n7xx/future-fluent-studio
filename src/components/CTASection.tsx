@@ -26,7 +26,7 @@ const CTASection = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
-          className="max-w-4xl mx-auto glass-card p-12 md:p-16 text-center relative overflow-hidden"
+          className="max-w-4xl mx-auto glass-card p-8 sm:p-12 md:p-16 text-center relative overflow-hidden"
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}

@@ -93,7 +93,7 @@ const ProcessSection = () => {
                 {/* Content Card */}
                 <div className={`flex-1 ${index % 2 === 0 ? "md:text-left" : "md:text-right"}`}>
                   <motion.div
-                    className="glass-card p-8 relative group"
+                    className="glass-card p-6 sm:p-8 relative group"
                     whileHover={{ y: -5 }}
                   >
                     {/* Step Number */}

@@ -131,7 +131,7 @@ const PortfolioPage = () => {
         <meta property="og:title" content="أعمالنا | 4Creative Portfolio" />
         <meta property="og:description" content="شوف إزاي 4Creative بتحول البراندات لـ Success Stories - أعمالنا بتتكلم عننا!" />
         <meta property="og:url" content="https://4creative.agency/portfolio" />
-        <meta property="og:image" content="https://4creative.agency/og-image.png" />
+        <meta property="og:image" content="https://4creative.agency/og-portfolio.png" />
       </Helmet>
       <MemoizedBackground />
       <Navbar />

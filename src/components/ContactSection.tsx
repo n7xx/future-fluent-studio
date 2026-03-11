@@ -181,7 +181,7 @@ const ContactSection = () => {
             <h2 className="text-2xl font-bold mb-6">ابعت لنا طلبك</h2>
             
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="contact-name" className="sr-only">اسمك</label>
                   <Input

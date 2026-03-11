@@ -63,7 +63,7 @@ const BlogPage = () => {
         <meta property="og:title" content="المدونة | 4Creative Blog" />
         <meta property="og:description" content="مقالات عملية عن Digital Marketing وBranding من فريق 4Creative - كل اللي محتاج تعرفه عشان تكبر براندك." />
         <meta property="og:url" content="https://4creative.agency/blog" />
-        <meta property="og:image" content="https://4creative.agency/og-image.png" />
+        <meta property="og:image" content="https://4creative.agency/og-blog.png" />
         <script type="application/ld+json">{JSON.stringify(blogSchema)}</script>
       </Helmet>
       <MemoizedBackground />

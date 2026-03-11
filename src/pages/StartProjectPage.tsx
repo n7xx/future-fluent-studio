@@ -97,7 +97,7 @@ const StartProjectPage = () => {
         <meta property="og:title" content="ابدأ مشروعك مع 4Creative" />
         <meta property="og:description" content="خلي براندك يوصل للناس الصح - فريق 4Creative جاهز يساعدك!" />
         <meta property="og:url" content="https://4creative.agency/start-project" />
-        <meta property="og:image" content="https://4creative.agency/og-image.png" />
+        <meta property="og:image" content="https://4creative.agency/og-start-project.png" />
       </Helmet>
       <MemoizedBackground />
       <Navbar />

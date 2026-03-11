@@ -106,7 +106,7 @@ const TestimonialsSection = () => {
             Brands اشتغلنا معاها في 4Creative
           </p>
           
-          <div className="flex flex-wrap justify-center gap-8">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-8">
             {clients.map((client, index) => (
               <div
                 key={index}
