@@ -70,7 +70,7 @@ const WhyUsSection = () => {
         </motion.div>
 
         {/* Reasons Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
           {reasons.map((reason, index) => (
             <motion.div
               key={index}
