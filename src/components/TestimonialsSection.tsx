@@ -56,7 +56,7 @@ const TestimonialsSection = () => {
         </motion.div>
 
         {/* Testimonials */}
-        <div className="grid md:grid-cols-3 gap-8 mb-20">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-20">
           {testimonials.map((testimonial, index) => (
             <motion.article
               key={index}
