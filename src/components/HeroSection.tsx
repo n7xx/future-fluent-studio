@@ -115,7 +115,7 @@ const HeroSection = () => {
                 className="text-center"
                 role="listitem"
               >
-                <div className="text-3xl md:text-4xl font-black gradient-text mb-2" aria-label={stat.number}>
+                <div className="text-2xl sm:text-3xl md:text-4xl font-black gradient-text mb-1 sm:mb-2" aria-label={stat.number}>
                   {stat.number}
                 </div>
                 <div className="text-sm text-muted-foreground">{stat.label}</div>
