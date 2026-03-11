@@ -113,7 +113,7 @@ const ContactSection = () => {
             transition={{ duration: 0.8 }}
           >
             {/* Benefits Grid */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {benefits.map((benefit, index) => (
                 <motion.div
                   key={benefit.title}
