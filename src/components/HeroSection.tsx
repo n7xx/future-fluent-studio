@@ -9,7 +9,7 @@ const HeroSection = () => {
     <section
       id="home"
       aria-labelledby="hero-heading"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-grid"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-grid pt-20 md:pt-0"
     >
       {/* Background Effects - CSS only, no JS animation */}
       <div className="absolute inset-0" aria-hidden="true">
