@@ -7,22 +7,26 @@ const features = [
   {
     icon: Target,
     title: "رؤية 4Creative",
-    description: "نبني Creative Agency تبقى Reference في السوق المصري للـ Digital Marketing والـ Branding",
+    description:
+      "نبني Creative Agency تبقى Reference في السوق المصري للـ Digital Marketing والـ Branding",
   },
   {
     icon: Eye,
     title: "مهمتنا",
-    description: "نحول البراندات من مجرد اسم لـ Brand يفضل في دماغ الناس ويحقق Sales",
+    description:
+      "نحول البراندات من مجرد اسم لـ Brand يفضل في دماغ الناس ويحقق Sales",
   },
   {
     icon: Zap,
     title: "Performance First",
-    description: "مش بنعمل حاجات حلوة وبس - إحنا بنشتغل على Results قابلة للقياس",
+    description:
+      "مش بنعمل حاجات حلوة وبس - إحنا بنشتغل على Results قابلة للقياس",
   },
   {
     icon: Users,
     title: "فريق 4Creative",
-    description: "Designers، Developers، Marketers، وContent Creators تحت سقف واحد",
+    description:
+      "Designers، Developers، Marketers، وContent Creators تحت سقف واحد",
   },
 ];
 
@@ -31,10 +35,14 @@ const AboutSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="py-16 sm:py-24 md:py-32 relative overflow-hidden" ref={ref}>
+    <section
+      id="about"
+      className="py-16 sm:py-24 md:py-32 relative overflow-hidden"
+      ref={ref}
+    >
       {/* Background effect */}
       <div className="absolute inset-0 bg-grid opacity-50" />
-      
+
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start md:items-center">
           {/* Text Content */}
@@ -52,22 +60,23 @@ const AboutSection = () => {
             >
               مين 4Creative؟
             </motion.span>
-            
+
             <h2 className="section-title mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl">
               Creative Agency
               <span className="block gradient-text">بتفهم السوق المصري</span>
             </h2>
-            
+
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-6 sm:mb-8">
-              أغلب البراندات بتصرف على Marketing ومفيش نتيجة... المشكلة مش في الإعلانات، 
-              المشكلة في الـ Strategy! إحنا في 4Creative بنبني لك Digital Marketing System 
-              كامل مش حملات مؤقتة. ده اللي بيخلي النتيجة تكبر مع الوقت.
+              أغلب البراندات بتصرف على Marketing ومفيش نتيجة... المشكلة مش في
+              الإعلانات، المشكلة في الـ Strategy! إحنا في 4Creative بنبني لك
+              Digital Marketing System كامل مش حملات مؤقتة. ده اللي بيخلي
+              النتيجة تكبر مع الوقت.
             </p>
-            
+
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-8 sm:mb-10">
-              من Website Development لـ Social Media Management لـ Video Production 
-              لـ Branding - كل حاجة تحت سقف واحد. فريق 4Creative فاهم السوق المصري 
-              وبيتكلم لغة الناس.
+              من Website Development لـ Social Media Management لـ Video
+              Production لـ Branding - كل حاجة تحت سقف واحد. فريق 4Creative فاهم
+              السوق المصري وبيتكلم لغة الناس.
             </p>
 
             <motion.a
@@ -99,8 +108,12 @@ const AboutSection = () => {
                 <div className="w-12 sm:w-14 h-12 sm:h-14 rounded-xl bg-primary/20 flex items-center justify-center mb-3 sm:mb-4">
                   <feature.icon className="w-6 sm:w-7 h-6 sm:h-7 text-primary" />
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold mb-2">{feature.title}</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+                <h3 className="text-lg sm:text-xl font-bold mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  {feature.description}
+                </p>
               </motion.div>
             ))}
           </motion.div>
