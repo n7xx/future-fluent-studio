@@ -1,6 +1,7 @@
 import { memo, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { ArrowRight, CheckCircle, ArrowUpLeft } from "lucide-react";
 import { getServiceById, services } from "@/data/services";
 import Navbar from "@/components/Navbar";
