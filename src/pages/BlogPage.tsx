@@ -1,6 +1,7 @@
 import { memo, useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { ArrowRight, Calendar, Clock, User, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import Navbar from "@/components/Navbar";
