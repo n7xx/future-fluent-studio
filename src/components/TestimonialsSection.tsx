@@ -60,7 +60,7 @@ const TestimonialsSection = () => {
           {testimonials.map((testimonial, index) => (
             <motion.article
               key={index}
-              className="glass-card p-8 relative"
+              className="glass-card p-6 sm:p-8 relative"
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.15 }}
