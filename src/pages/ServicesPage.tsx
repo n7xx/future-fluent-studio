@@ -73,6 +73,15 @@ const ServicesPage = () => {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
+      <Helmet>
+        <title>خدماتنا | 4Creative - Full-Service Digital Agency في مصر</title>
+        <meta name="description" content="خدمات 4Creative: Website Development، Digital Marketing، Branding، Content Creation، Video Production. كل اللي براندك محتاجه في مكان واحد." />
+        <link rel="canonical" href="https://4creative.agency/services" />
+        <meta property="og:title" content="خدماتنا | 4Creative Full-Service Digital Agency" />
+        <meta property="og:description" content="من Website Development لـ Digital Marketing لـ Branding - 4Creative بتقدم كل اللي براندك محتاجه!" />
+        <meta property="og:url" content="https://4creative.agency/services" />
+        <meta property="og:image" content="https://4creative.agency/og-image.png" />
+      </Helmet>
       <MemoizedBackground />
       <Navbar />
 

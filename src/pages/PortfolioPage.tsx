@@ -124,6 +124,15 @@ const PortfolioPage = () => {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
+      <Helmet>
+        <title>أعمالنا | 4Creative - Portfolio Digital Marketing Agency</title>
+        <meta name="description" content="شوف أعمال 4Creative - من Website Development لـ Marketing Campaigns لـ Branding. 150+ مشروع ناجح مع براندات في مصر." />
+        <link rel="canonical" href="https://4creative.agency/portfolio" />
+        <meta property="og:title" content="أعمالنا | 4Creative Portfolio" />
+        <meta property="og:description" content="شوف إزاي 4Creative بتحول البراندات لـ Success Stories - أعمالنا بتتكلم عننا!" />
+        <meta property="og:url" content="https://4creative.agency/portfolio" />
+        <meta property="og:image" content="https://4creative.agency/og-image.png" />
+      </Helmet>
       <MemoizedBackground />
       <Navbar />
 

@@ -64,14 +64,19 @@ const BlogPostPage = () => {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
+      <Helmet>
+        <title>{post.title} | 4Creative Blog</title>
+        <meta name="description" content={post.excerpt} />
+        <link rel="canonical" href={`https://4creative.agency/blog/${post.id}`} />
+        <meta property="og:title" content={`${post.title} | 4Creative`} />
+        <meta property="og:description" content={post.excerpt} />
+        <meta property="og:url" content={`https://4creative.agency/blog/${post.id}`} />
+        <meta property="og:image" content={post.image} />
+        <meta property="og:type" content="article" />
+        <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
+      </Helmet>
       <MemoizedBackground />
       <Navbar />
-
-      {/* JSON-LD Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
 
       {/* Hero */}
       <section className="pt-32 pb-8 relative">
