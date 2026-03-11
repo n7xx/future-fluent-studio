@@ -113,7 +113,7 @@ const ContactSection = () => {
             transition={{ duration: 0.8 }}
           >
             {/* Benefits Grid */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {benefits.map((benefit, index) => (
                 <motion.div
                   key={benefit.title}
@@ -135,7 +135,7 @@ const ContactSection = () => {
 
             {/* Trust Signals */}
             <motion.div 
-              className="grid grid-cols-4 gap-4 glass-card p-6 rounded-xl"
+              className="grid grid-cols-2 sm:grid-cols-4 gap-4 glass-card p-4 sm:p-6 rounded-xl"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.5 }}
@@ -181,7 +181,7 @@ const ContactSection = () => {
             <h2 className="text-2xl font-bold mb-6">ابعت لنا طلبك</h2>
             
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="contact-name" className="sr-only">اسمك</label>
                   <Input

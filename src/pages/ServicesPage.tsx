@@ -80,7 +80,7 @@ const ServicesPage = () => {
         <meta property="og:title" content="خدماتنا | 4Creative Full-Service Digital Agency" />
         <meta property="og:description" content="من Website Development لـ Digital Marketing لـ Branding - 4Creative بتقدم كل اللي براندك محتاجه!" />
         <meta property="og:url" content="https://4creative.agency/services" />
-        <meta property="og:image" content="https://4creative.agency/og-image.png" />
+        <meta property="og:image" content="https://4creative.agency/og-services.png" />
       </Helmet>
       <MemoizedBackground />
       <Navbar />

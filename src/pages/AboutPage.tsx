@@ -87,6 +87,7 @@ const AboutPage = () => {
         <meta property="og:title" content="من نحن | 4Creative - Creative Agency في مصر" />
         <meta property="og:description" content="تعرف على 4Creative - شريكك في النجاح الرقمي. بنبني براندات تفضل في دماغ الناس!" />
         <meta property="og:url" content="https://4creative.agency/about" />
+        <meta property="og:image" content="https://4creative.agency/og-about.png" />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Helmet>
 

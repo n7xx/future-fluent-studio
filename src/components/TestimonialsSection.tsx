@@ -56,11 +56,11 @@ const TestimonialsSection = () => {
         </motion.div>
 
         {/* Testimonials */}
-        <div className="grid md:grid-cols-3 gap-8 mb-20">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-20">
           {testimonials.map((testimonial, index) => (
             <motion.article
               key={index}
-              className="glass-card p-8 relative"
+              className="glass-card p-6 sm:p-8 relative"
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.15 }}
@@ -106,7 +106,7 @@ const TestimonialsSection = () => {
             Brands اشتغلنا معاها في 4Creative
           </p>
           
-          <div className="flex flex-wrap justify-center gap-8">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-8">
             {clients.map((client, index) => (
               <div
                 key={index}
