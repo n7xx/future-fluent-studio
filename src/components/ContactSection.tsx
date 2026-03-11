@@ -135,7 +135,7 @@ const ContactSection = () => {
 
             {/* Trust Signals */}
             <motion.div 
-              className="grid grid-cols-4 gap-4 glass-card p-6 rounded-xl"
+              className="grid grid-cols-2 sm:grid-cols-4 gap-4 glass-card p-4 sm:p-6 rounded-xl"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.5 }}
