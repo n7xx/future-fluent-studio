@@ -1,6 +1,7 @@
 import { memo, useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { 
   ArrowRight, 
   Rocket, 
@@ -89,6 +90,15 @@ const StartProjectPage = () => {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
+      <Helmet>
+        <title>ابدأ مشروعك | 4Creative - تواصل معنا</title>
+        <meta name="description" content="ابدأ مشروعك مع 4Creative - احكيلنا عن براندك وفريقنا هيتواصل معاك. Website Development، Digital Marketing، Branding وأكتر." />
+        <link rel="canonical" href="https://4creative.agency/start-project" />
+        <meta property="og:title" content="ابدأ مشروعك مع 4Creative" />
+        <meta property="og:description" content="خلي براندك يوصل للناس الصح - فريق 4Creative جاهز يساعدك!" />
+        <meta property="og:url" content="https://4creative.agency/start-project" />
+        <meta property="og:image" content="https://4creative.agency/og-image.png" />
+      </Helmet>
       <MemoizedBackground />
       <Navbar />
 

@@ -1,6 +1,7 @@
 import { memo, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { ArrowRight, CheckCircle, ArrowUpLeft } from "lucide-react";
 import { getServiceById, services } from "@/data/services";
 import Navbar from "@/components/Navbar";
@@ -44,6 +45,15 @@ const ServicePage = () => {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
+      <Helmet>
+        <title>{service.title} | 4Creative - خدماتنا</title>
+        <meta name="description" content={service.fullDescription} />
+        <link rel="canonical" href={`https://4creative.agency/services/${service.id}`} />
+        <meta property="og:title" content={`${service.title} | 4Creative`} />
+        <meta property="og:description" content={service.fullDescription} />
+        <meta property="og:url" content={`https://4creative.agency/services/${service.id}`} />
+        <meta property="og:image" content="https://4creative.agency/og-image.png" />
+      </Helmet>
       <MemoizedBackground />
       <Navbar />
       

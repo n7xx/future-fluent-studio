@@ -9,7 +9,7 @@ const HeroSection = () => {
     <section
       id="home"
       aria-labelledby="hero-heading"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-grid"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-grid pt-20 md:pt-0"
     >
       {/* Background Effects - CSS only, no JS animation */}
       <div className="absolute inset-0" aria-hidden="true">
@@ -49,7 +49,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-black leading-tight mb-8"
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-tight mb-6 md:mb-8"
           >
             <span className="block text-foreground">البراند بتاعك</span>
             <span className="block gradient-text">يستاهل يكبر</span>
@@ -60,7 +60,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed"
+            className="text-base sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-8 md:mb-12 leading-relaxed px-2"
           >
             إحنا في 4Creative بنبني لك Marketing System كامل - من Website Development 
             لـ Social Media Management لـ Branding. مش بوستات وخلاص، إحنا بنشتغل Results!
@@ -101,7 +101,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="grid grid-cols-3 gap-8 mt-20 max-w-2xl mx-auto"
+            className="grid grid-cols-3 gap-4 sm:gap-8 mt-12 md:mt-20 max-w-2xl mx-auto"
             role="list"
             aria-label="إحصائيات 4Creative"
           >
@@ -115,10 +115,10 @@ const HeroSection = () => {
                 className="text-center"
                 role="listitem"
               >
-                <div className="text-3xl md:text-4xl font-black gradient-text mb-2" aria-label={stat.number}>
+                <div className="text-2xl sm:text-3xl md:text-4xl font-black gradient-text mb-1 sm:mb-2" aria-label={stat.number}>
                   {stat.number}
                 </div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
+                <div className="text-xs sm:text-sm text-muted-foreground">{stat.label}</div>
               </div>
             ))}
           </motion.div>

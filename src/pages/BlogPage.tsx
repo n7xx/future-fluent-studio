@@ -1,6 +1,7 @@
 import { memo, useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { ArrowRight, Calendar, Clock, User, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import Navbar from "@/components/Navbar";
@@ -55,14 +56,18 @@ const BlogPage = () => {
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
+      <Helmet>
+        <title>المدونة | 4Creative - مقالات Digital Marketing وBranding</title>
+        <meta name="description" content="مقالات عملية من فريق 4Creative عن Digital Marketing، Branding، Social Media، وContent Creation. تعلم إزاي تكبر براندك!" />
+        <link rel="canonical" href="https://4creative.agency/blog" />
+        <meta property="og:title" content="المدونة | 4Creative Blog" />
+        <meta property="og:description" content="مقالات عملية عن Digital Marketing وBranding من فريق 4Creative - كل اللي محتاج تعرفه عشان تكبر براندك." />
+        <meta property="og:url" content="https://4creative.agency/blog" />
+        <meta property="og:image" content="https://4creative.agency/og-image.png" />
+        <script type="application/ld+json">{JSON.stringify(blogSchema)}</script>
+      </Helmet>
       <MemoizedBackground />
       <Navbar />
-
-      {/* JSON-LD Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
-      />
 
       {/* Hero Section */}
       <section className="pt-32 pb-16 relative">
