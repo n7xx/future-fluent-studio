@@ -60,7 +60,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed"
+            className="text-base sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-8 md:mb-12 leading-relaxed px-2"
           >
             إحنا في 4Creative بنبني لك Marketing System كامل - من Website Development 
             لـ Social Media Management لـ Branding. مش بوستات وخلاص، إحنا بنشتغل Results!
