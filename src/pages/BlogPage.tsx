@@ -124,16 +124,17 @@ const BlogPage = () => {
       <section className="py-8 relative">
         <div className="container mx-auto px-6">
           <motion.div
-            className="flex flex-wrap justify-center gap-3"
+            className="flex overflow-x-auto gap-3 pb-2 scrollbar-hide"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {categories.map((category) => (
               <motion.button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`px-5 py-2 rounded-full font-medium transition-all duration-300 text-sm ${
+                className={`px-5 py-2 rounded-full font-medium transition-all duration-300 text-sm whitespace-nowrap flex-shrink-0 flex items-center gap-2 ${
                   activeCategory === category
                     ? "bg-primary text-primary-foreground shadow-lg"
                     : "glass hover:bg-primary/20"
@@ -142,6 +143,13 @@ const BlogPage = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 {category}
+                <span className={`inline-flex items-center justify-center w-5 h-5 rounded-full text-xs font-bold ${
+                  activeCategory === category
+                    ? "bg-primary-foreground/20 text-primary-foreground"
+                    : "bg-primary/20 text-primary"
+                }`}>
+                  {getCategoryCount(category)}
+                </span>
               </motion.button>
             ))}
           </motion.div>
