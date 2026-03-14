@@ -13,6 +13,11 @@ const MemoizedBackground = memo(Background3D);
 
 const categories = ["الكل", "Digital Marketing", "Branding", "Social Media", "Web Development", "Content Marketing", "Paid Advertising"];
 
+const getCategoryCount = (category: string) => {
+  if (category === "الكل") return blogPosts.length;
+  return blogPosts.filter(post => post.category === category).length;
+};
+
 // JSON-LD Schema for Blog
 const blogSchema = {
   "@context": "https://schema.org",
