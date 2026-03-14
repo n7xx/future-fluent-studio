@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { 
+import { supabase } from "@/integrations/supabase/client";
+import {
   Send, 
   MessageCircle,
   Calendar,

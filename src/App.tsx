@@ -8,7 +8,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { lazy, Suspense } from "react";
 import Index from "./pages/Index";
 
-// Lazy load non-critical pages
+// Lazy load pages
 const NotFound = lazy(() => import("./pages/NotFound"));
 const ServicePage = lazy(() => import("./pages/ServicePage"));
 const StartProjectPage = lazy(() => import("./pages/StartProjectPage"));
@@ -18,18 +18,23 @@ const BlogPage = lazy(() => import("./pages/BlogPage"));
 const BlogPostPage = lazy(() => import("./pages/BlogPostPage"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
 
+// Admin pages
+const AdminLogin = lazy(() => import("./pages/admin/AdminLogin"));
+const AdminLayout = lazy(() => import("./pages/admin/AdminLayout"));
+const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboard"));
+const AdminBlog = lazy(() => import("./pages/admin/AdminBlog"));
+const AdminMessages = lazy(() => import("./pages/admin/AdminMessages"));
+const AdminSettings = lazy(() => import("./pages/admin/AdminSettings"));
+
 const queryClient = new QueryClient();
 
-// Scroll to top component
 const ScrollToTop = () => {
   const { pathname } = useLocation();
-
   useEffect(() => {
     if (!window.location.hash) {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }, [pathname]);
-
   return null;
 };
 
@@ -53,6 +58,16 @@ const AnimatedRoutes = memo(() => {
           <Route path="/services/:serviceId" element={<ServicePage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:postId" element={<BlogPostPage />} />
+
+          {/* Admin Routes */}
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<AdminDashboard />} />
+            <Route path="blog" element={<AdminBlog />} />
+            <Route path="messages" element={<AdminMessages />} />
+            <Route path="settings" element={<AdminSettings />} />
+          </Route>
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
