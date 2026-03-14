@@ -60,8 +60,27 @@ const ContactSection = () => {
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    const { error } = await supabase.from("contact_messages").insert({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone || null,
+      service: formData.service || null,
+      budget: formData.budget || null,
+      message: formData.message || "لم يتم إدخال رسالة",
+    });
+
+    if (error) {
+      toast({
+        title: "حدث خطأ ❌",
+        description: "حاول تاني بعد شوية",
+        variant: "destructive",
+      });
+      return;
+    }
+
     toast({
       title: "تم إرسال طلبك بنجاح! 🎉",
       description: "هنتواصل معاك في أقرب وقت",
