@@ -54,6 +54,7 @@ const AnimatedRoutes = memo(() => {
   return (
     <>
       <ScrollToTop />
+      <PageViewTracker />
       <Suspense fallback={<PageFallback />}>
         <Routes>
           <Route path="/" element={<Index />} />
