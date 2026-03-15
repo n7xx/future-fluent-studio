@@ -40,7 +40,6 @@ const ScrollToTop = () => {
 };
 
 const PageViewTracker = () => {
-  const { usePageView } = require("@/hooks/usePageView");
   usePageView();
   return null;
 };
