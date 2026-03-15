@@ -38,6 +38,12 @@ const ScrollToTop = () => {
   return null;
 };
 
+const PageViewTracker = () => {
+  const { usePageView } = require("@/hooks/usePageView");
+  usePageView();
+  return null;
+};
+
 const PageFallback = () => (
   <div className="min-h-screen flex items-center justify-center bg-background">
     <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
