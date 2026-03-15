@@ -1,57 +1,80 @@
-import { memo, useState } from "react";
+import { memo, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { ArrowRight, Calendar, Clock, User, Search } from "lucide-react";
+import { ArrowRight, Calendar, Clock, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import Background3D from "@/components/Background3D";
-import { blogPosts } from "@/data/blogPosts";
+import { blogPosts as staticBlogPosts } from "@/data/blogPosts";
+import { supabase } from "@/integrations/supabase/client";
 
-const MemoizedBackground = memo(Background3D);
+interface BlogPostItem {
+  id: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  author: string;
+  date: string;
+  readTime: string;
+  image: string;
+  tags: string[];
+}
 
 const categories = ["الكل", "Digital Marketing", "Branding", "Social Media", "Web Development", "Content Marketing", "Paid Advertising"];
-
-const getCategoryCount = (category: string) => {
-  if (category === "الكل") return blogPosts.length;
-  return blogPosts.filter(post => post.category === category).length;
-};
-
-// JSON-LD Schema for Blog
-const blogSchema = {
-  "@context": "https://schema.org",
-  "@type": "Blog",
-  "name": "4Creative Blog",
-  "description": "مقالات عن Digital Marketing، Branding، Social Media، وأكتر من فريق 4Creative",
-  "url": "https://4creative.agency/blog",
-  "publisher": {
-    "@type": "Organization",
-    "name": "4Creative",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://4creative.agency/logo.png"
-    }
-  },
-  "blogPost": blogPosts.map(post => ({
-    "@type": "BlogPosting",
-    "headline": post.title,
-    "description": post.excerpt,
-    "datePublished": post.date,
-    "author": {
-      "@type": "Organization",
-      "name": post.author
-    },
-    "image": post.image
-  }))
-};
 
 const BlogPage = () => {
   const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState("الكل");
   const [searchQuery, setSearchQuery] = useState("");
+  const [posts, setPosts] = useState<BlogPostItem[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const filteredPosts = blogPosts.filter(post => {
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const { data, error } = await supabase
+        .from("blog_posts")
+        .select("*")
+        .eq("published", true)
+        .order("created_at", { ascending: false });
+
+      if (error || !data || data.length === 0) {
+        // Fallback to static data
+        setPosts(staticBlogPosts.map(p => ({
+          id: p.id,
+          title: p.title,
+          excerpt: p.excerpt,
+          category: p.category,
+          author: p.author,
+          date: p.date,
+          readTime: p.readTime,
+          image: p.image,
+          tags: p.tags,
+        })));
+      } else {
+        setPosts(data.map(p => ({
+          id: p.slug || p.id,
+          title: p.title,
+          excerpt: p.excerpt,
+          category: p.category,
+          author: p.author,
+          date: p.created_at,
+          readTime: p.read_time,
+          image: p.image,
+          tags: p.tags,
+        })));
+      }
+      setLoading(false);
+    };
+    fetchPosts();
+  }, []);
+
+  const getCategoryCount = (category: string) => {
+    if (category === "الكل") return posts.length;
+    return posts.filter(post => post.category === category).length;
+  };
+
+  const filteredPosts = posts.filter(post => {
     const matchesCategory = activeCategory === "الكل" || post.category === activeCategory;
     const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -59,25 +82,31 @@ const BlogPage = () => {
     return matchesCategory && matchesSearch;
   });
 
+  const blogSchema = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "4Creative Blog",
+    "description": "مقالات عن Digital Marketing، Branding، Social Media، وأكتر من فريق 4Creative",
+    "url": "https://4creative.agency/blog",
+  };
+
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Helmet>
         <title>المدونة | 4Creative - مقالات Digital Marketing وBranding</title>
-        <meta name="description" content="مقالات عملية من فريق 4Creative عن Digital Marketing، Branding، Social Media، وContent Creation. تعلم إزاي تكبر براندك!" />
+        <meta name="description" content="مقالات عملية من فريق 4Creative عن Digital Marketing، Branding، Social Media، وContent Creation." />
         <link rel="canonical" href="https://4creative.agency/blog" />
         <meta property="og:title" content="المدونة | 4Creative Blog" />
-        <meta property="og:description" content="مقالات عملية عن Digital Marketing وBranding من فريق 4Creative - كل اللي محتاج تعرفه عشان تكبر براندك." />
+        <meta property="og:description" content="مقالات عملية عن Digital Marketing وBranding من فريق 4Creative" />
         <meta property="og:url" content="https://4creative.agency/blog" />
         <meta property="og:image" content="https://4creative.agency/og-blog.png" />
         <script type="application/ld+json">{JSON.stringify(blogSchema)}</script>
       </Helmet>
-      <MemoizedBackground />
       <Navbar />
 
       {/* Hero Section */}
       <section className="pt-32 pb-16 relative">
         <div className="container mx-auto px-6">
-          {/* Back Button */}
           <motion.button
             onClick={() => navigate("/")}
             className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8"
@@ -94,19 +123,14 @@ const BlogPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="inline-block text-primary font-bold text-lg mb-4">
-              4Creative Blog
-            </span>
+            <span className="inline-block text-primary font-bold text-lg mb-4">4Creative Blog</span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6">
               <span className="block">Insights & Tips</span>
               <span className="block gradient-text">من فريق 4Creative</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              مقالات عملية عن Digital Marketing، Branding، Social Media، وأكتر. 
-              كل اللي محتاج تعرفه عشان تكبر البراند بتاعك.
+              مقالات عملية عن Digital Marketing، Branding، Social Media، وأكتر.
             </p>
-
-            {/* Search */}
             <div className="relative max-w-md mx-auto">
               <Search className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
               <Input
@@ -131,7 +155,7 @@ const BlogPage = () => {
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {categories.map((category) => (
-              <motion.button
+              <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
                 className={`px-5 py-2 rounded-full font-medium transition-all duration-300 text-sm whitespace-nowrap flex-shrink-0 flex items-center gap-2 ${
@@ -139,8 +163,6 @@ const BlogPage = () => {
                     ? "bg-primary text-primary-foreground shadow-lg"
                     : "glass hover:bg-primary/20"
                 }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
               >
                 {category}
                 <span className={`inline-flex items-center justify-center w-5 h-5 rounded-full text-xs font-bold ${
@@ -150,7 +172,7 @@ const BlogPage = () => {
                 }`}>
                   {getCategoryCount(category)}
                 </span>
-              </motion.button>
+              </button>
             ))}
           </motion.div>
         </div>
@@ -159,12 +181,12 @@ const BlogPage = () => {
       {/* Blog Grid */}
       <section className="py-12 relative">
         <div className="container mx-auto px-6">
-          {filteredPosts.length === 0 ? (
-            <motion.div
-              className="text-center py-20"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-            >
+          {loading ? (
+            <div className="flex justify-center py-20">
+              <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+            </div>
+          ) : filteredPosts.length === 0 ? (
+            <motion.div className="text-center py-20" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
               <p className="text-xl text-muted-foreground">مفيش مقالات تطابق البحث</p>
             </motion.div>
           ) : (
@@ -179,29 +201,23 @@ const BlogPage = () => {
                   whileHover={{ y: -10 }}
                   onClick={() => navigate(`/blog/${post.id}`)}
                 >
-                  {/* Image */}
                   <div className="relative h-48 overflow-hidden">
                     <img
                       src={post.image}
                       alt={post.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
                     <span className="absolute top-4 right-4 px-3 py-1 text-xs rounded-full bg-primary/90 text-primary-foreground">
                       {post.category}
                     </span>
                   </div>
-
-                  {/* Content */}
                   <div className="p-6">
                     <h2 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors line-clamp-2">
                       {post.title}
                     </h2>
-                    <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
-                      {post.excerpt}
-                    </p>
-
-                    {/* Meta */}
+                    <p className="text-muted-foreground text-sm mb-4 line-clamp-2">{post.excerpt}</p>
                     <div className="flex items-center gap-4 text-xs text-muted-foreground">
                       <div className="flex items-center gap-1">
                         <Calendar className="w-4 h-4" />
@@ -212,16 +228,9 @@ const BlogPage = () => {
                         <span>{post.readTime}</span>
                       </div>
                     </div>
-
-                    {/* Tags */}
                     <div className="flex flex-wrap gap-2 mt-4">
                       {post.tags.slice(0, 3).map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-2 py-1 text-xs rounded bg-primary/10 text-primary"
-                        >
-                          {tag}
-                        </span>
+                        <span key={tag} className="px-2 py-1 text-xs rounded bg-primary/10 text-primary">{tag}</span>
                       ))}
                     </div>
                   </div>
@@ -243,12 +252,8 @@ const BlogPage = () => {
           >
             <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10" />
             <div className="relative z-10">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                عايز تطبق اللي اتعلمته؟
-              </h2>
-              <p className="text-xl text-muted-foreground mb-8">
-                فريق 4Creative جاهز يساعدك تحول المعرفة دي لـ Results حقيقية
-              </p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">عايز تطبق اللي اتعلمته؟</h2>
+              <p className="text-xl text-muted-foreground mb-8">فريق 4Creative جاهز يساعدك تحول المعرفة دي لـ Results حقيقية</p>
               <motion.button
                 onClick={() => navigate("/start-project")}
                 className="btn-primary text-lg px-8 py-4"
