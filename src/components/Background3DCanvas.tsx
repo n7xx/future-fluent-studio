@@ -46,7 +46,6 @@ const Background3DCanvas = () => {
       style={{ background: "transparent" }}
       gl={{ alpha: true, antialias: false, powerPreference: "low-power" }}
       dpr={[1, 1.5]}
-      frameloop="demand"
     >
       <ParticleField />
     </Canvas>
