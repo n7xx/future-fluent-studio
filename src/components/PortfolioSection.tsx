@@ -1,192 +1,83 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ExternalLink, Eye } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { portfolioContent } from "@/data/content";
 
-const categories = ["الكل", "Website Development", "Marketing Campaigns", "Video Production", "Branding"];
+const projectImages = [
+  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1634942537034-2531766767d1?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop",
+];
 
-const projects = [
-  {
-    title: "Fashion E-commerce Platform",
-    category: "Website Development",
-    description: "4Creative بنت E-commerce متكامل بـ Smooth UX وConversion-Optimized Design",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-    color: "from-purple-500/20 to-pink-500/20",
-  },
-  {
-    title: "Product Launch Campaign",
-    category: "Marketing Campaigns",
-    description: "Integrated Digital Campaign حققت 300% ROI",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-    color: "from-blue-500/20 to-cyan-500/20",
-  },
-  {
-    title: "Motion Graphics Video",
-    category: "Video Production",
-    description: "Explainer Video بـ Creative Style حقق 1M+ Views",
-    image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&h=600&fit=crop",
-    color: "from-orange-500/20 to-red-500/20",
-  },
-  {
-    title: "Restaurant Brand Identity",
-    category: "Branding",
-    description: "Complete Visual Identity Design بتعكس الـ Premium Feel",
-    image: "https://images.unsplash.com/photo-1634942537034-2531766767d1?w=800&h=600&fit=crop",
-    color: "from-green-500/20 to-emerald-500/20",
-  },
-  {
-    title: "Educational Platform",
-    category: "Website Development",
-    description: "E-learning Platform متكاملة بـ 10K+ Active Users",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop",
-    color: "from-violet-500/20 to-purple-500/20",
-  },
-  {
-    title: "Ramadan Marketing Campaign",
-    category: "Marketing Campaigns",
-    description: "Seasonal Campaign حققت أعلى Sales في تاريخ الـ Brand",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop",
-    color: "from-amber-500/20 to-yellow-500/20",
-  },
+const projectColors = [
+  "from-purple-500/20 to-pink-500/20",
+  "from-blue-500/20 to-cyan-500/20",
+  "from-orange-500/20 to-red-500/20",
+  "from-green-500/20 to-emerald-500/20",
+  "from-violet-500/20 to-purple-500/20",
+  "from-amber-500/20 to-yellow-500/20",
 ];
 
 const PortfolioSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [activeCategory, setActiveCategory] = useState("الكل");
   const navigate = useNavigate();
+  const { lang } = useLanguage();
+  const c = portfolioContent[lang];
+  const [activeCategory, setActiveCategory] = useState(c.categories[0]);
 
-  const filteredProjects = activeCategory === "الكل"
-    ? projects
-    : projects.filter(p => p.category === activeCategory);
+  const filteredProjects = activeCategory === c.categories[0]
+    ? c.projects
+    : c.projects.filter(p => p.category === activeCategory);
 
   return (
     <section id="portfolio" className="py-32 relative overflow-hidden" ref={ref}>
       <div className="container mx-auto px-6 relative z-10">
-        {/* Header */}
-        <motion.div
-          className="text-center max-w-3xl mx-auto mb-12"
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          <span className="inline-block text-primary font-bold text-lg mb-4">
-            4Creative Portfolio
-          </span>
-          <h2 className="section-title">
-            Success Stories
-            <span className="block gradient-text">من شغل 4Creative</span>
-          </h2>
-          <p className="text-lg text-muted-foreground">
-            Projects بتعكس الـ Quality والـ Creativity بتاع فريق 4Creative
-          </p>
+        <motion.div className="text-center max-w-3xl mx-auto mb-12" initial={{ opacity: 0, y: 40 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.8 }}>
+          <span className="inline-block text-primary font-bold text-lg mb-4">{c.tag}</span>
+          <h2 className="section-title">{c.title1}<span className="block gradient-text">{c.title2}</span></h2>
+          <p className="text-lg text-muted-foreground">{c.subtitle}</p>
         </motion.div>
 
-        {/* Filter Tabs */}
-        <motion.div
-          className="flex flex-wrap justify-center gap-3 mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          {categories.map((category) => (
-            <motion.button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                activeCategory === category
-                  ? "bg-primary text-primary-foreground shadow-lg"
-                  : "glass hover:bg-primary/20"
-              }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              style={{
-                boxShadow: activeCategory === category 
-                  ? "0 0 30px hsla(262, 83%, 58%, 0.4)" 
-                  : "none"
-              }}
-            >
+        <motion.div className="flex flex-wrap justify-center gap-3 mb-12" initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.2 }}>
+          {c.categories.map((category) => (
+            <motion.button key={category} onClick={() => setActiveCategory(category)} className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${activeCategory === category ? "bg-primary text-primary-foreground shadow-lg" : "glass hover:bg-primary/20"}`} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} style={{ boxShadow: activeCategory === category ? "0 0 30px hsla(262, 83%, 58%, 0.4)" : "none" }}>
               {category}
             </motion.button>
           ))}
         </motion.div>
 
-        {/* Projects Grid */}
-        <motion.div 
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-          layout
-        >
-          {filteredProjects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              className="group relative rounded-2xl overflow-hidden glass-card"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              layout
-              whileHover={{ y: -10 }}
-            >
-              {/* Image */}
-              <div className="relative h-64 overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className={`absolute inset-0 bg-gradient-to-t ${project.color} opacity-60`} />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-                
-                {/* Overlay Actions */}
-                <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <motion.button
-                    className="w-12 h-12 rounded-full bg-primary/90 flex items-center justify-center"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <Eye className="w-5 h-5 text-primary-foreground" />
-                  </motion.button>
-                  <motion.button
-                    className="w-12 h-12 rounded-full bg-white/20 backdrop-blur flex items-center justify-center"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                  >
-                    <ExternalLink className="w-5 h-5 text-white" />
-                  </motion.button>
+        <motion.div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" layout>
+          {filteredProjects.map((project, index) => {
+            const origIndex = c.projects.indexOf(project);
+            return (
+              <motion.div key={project.title} className="group relative rounded-2xl overflow-hidden glass-card" initial={{ opacity: 0, scale: 0.9 }} animate={isInView ? { opacity: 1, scale: 1 } : {}} transition={{ duration: 0.5, delay: index * 0.1 }} layout whileHover={{ y: -10 }}>
+                <div className="relative h-64 overflow-hidden">
+                  <img src={projectImages[origIndex]} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <div className={`absolute inset-0 bg-gradient-to-t ${projectColors[origIndex]} opacity-60`} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+                  <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <motion.button className="w-12 h-12 rounded-full bg-primary/90 flex items-center justify-center" whileHover={{ scale: 1.1 }}><Eye className="w-5 h-5 text-primary-foreground" /></motion.button>
+                    <motion.button className="w-12 h-12 rounded-full bg-white/20 backdrop-blur flex items-center justify-center" whileHover={{ scale: 1.1 }}><ExternalLink className="w-5 h-5 text-white" /></motion.button>
+                  </div>
                 </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <span className="text-xs text-primary font-medium">
-                  {project.category}
-                </span>
-                <h3 className="text-xl font-bold mt-2 mb-2 group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  {project.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
+                <div className="p-6">
+                  <span className="text-xs text-primary font-medium">{project.category}</span>
+                  <h3 className="text-xl font-bold mt-2 mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
+                  <p className="text-sm text-muted-foreground">{project.description}</p>
+                </div>
+              </motion.div>
+            );
+          })}
         </motion.div>
 
-        {/* View All Button */}
-        <motion.div
-          className="text-center mt-12"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.8 }}
-        >
-          <motion.button
-            onClick={() => navigate("/portfolio")}
-            className="btn-secondary"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            شوف كل أعمال 4Creative
-          </motion.button>
+        <motion.div className="text-center mt-12" initial={{ opacity: 0 }} animate={isInView ? { opacity: 1 } : {}} transition={{ delay: 0.8 }}>
+          <motion.button onClick={() => navigate("/portfolio")} className="btn-secondary" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>{c.viewAll}</motion.button>
         </motion.div>
       </div>
     </section>
