@@ -2,17 +2,10 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { navContent } from "@/data/content";
 import logoDark from "@/assets/logo.png";
 import logoLight from "@/assets/logo-light.png";
-
-const navItems = [
-  { label: "الرئيسية", href: "/", isPage: true },
-  { label: "من نحن", href: "/about", isPage: true },
-  { label: "خدماتنا", href: "/services", isPage: true },
-  { label: "أعمالنا", href: "/portfolio", isPage: true },
-  { label: "المدونة", href: "/blog", isPage: true },
-  { label: "تواصل معنا", href: "/#contact", isPage: false },
-];
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -20,9 +13,11 @@ const Navbar = () => {
   const [isDark, setIsDark] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
+  const { lang, setLang } = useLanguage();
+
+  const content = navContent[lang];
 
   useEffect(() => {
-    // Check for saved theme preference or default to dark
     const savedTheme = localStorage.getItem("theme");
     const prefersDark = savedTheme === "dark" || (!savedTheme && true);
     setIsDark(prefersDark);
@@ -44,38 +39,49 @@ const Navbar = () => {
     localStorage.setItem("theme", newIsDark ? "dark" : "light");
   };
 
-  const handleNavClick = (item: typeof navItems[0]) => {
+  const toggleLang = () => {
+    setLang(lang === "ar" ? "en" : "ar");
+  };
+
+  const handleNavClick = (item: { label: string; href: string; isPage: boolean }) => {
     setIsMobileMenuOpen(false);
     
     if (item.isPage) {
-      // For home page, always scroll to top
       if (item.href === '/') {
         if (location.pathname === '/') {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         } else {
           navigate('/');
-          setTimeout(() => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }, 100);
+          setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
         }
       } else {
         navigate(item.href);
       }
     } else {
-      // Handle hash navigation
-      const [path, hash] = item.href.split('#');
+      const [, hash] = item.href.split('#');
       if (location.pathname !== '/') {
         navigate('/');
         setTimeout(() => {
-          const element = document.getElementById(hash);
-          element?.scrollIntoView({ behavior: 'smooth' });
+          document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' });
         }, 100);
       } else {
-        const element = document.getElementById(hash);
-        element?.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' });
       }
     }
   };
+
+  const FlagButton = () => (
+    <motion.button
+      onClick={toggleLang}
+      className="flex items-center gap-2 px-3 py-1.5 rounded-full glass hover:bg-primary/10 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      aria-label={lang === "ar" ? "Switch to English" : "التبديل للعربية"}
+    >
+      <span className="text-lg leading-none">{lang === "ar" ? "🇬🇧" : "🇪🇬"}</span>
+      <span className="text-xs font-bold text-foreground/80">{lang === "ar" ? "EN" : "عربي"}</span>
+    </motion.button>
+  );
 
   return (
     <>
@@ -86,7 +92,7 @@ const Navbar = () => {
           isScrolled ? "glass py-2" : "py-3"
         }`}
         role="navigation"
-        aria-label="التنقل الرئيسي"
+        aria-label={content.mainNav}
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
@@ -97,7 +103,7 @@ const Navbar = () => {
             role="link"
             tabIndex={0}
             onKeyDown={(e) => e.key === 'Enter' && navigate("/")}
-            aria-label="الصفحة الرئيسية - 4Creative"
+            aria-label={content.homepageAria}
           >
             <img 
               src={isDark ? logoDark : logoLight} 
@@ -111,7 +117,7 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <ul className="hidden lg:flex items-center gap-8" role="menubar">
-            {navItems.map((item, index) => (
+            {content.items.map((item, index) => (
               <li key={item.href} role="none">
                 <motion.button
                   onClick={() => handleNavClick(item)}
@@ -121,12 +127,17 @@ const Navbar = () => {
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ y: -2 }}
                   role="menuitem"
-                  aria-label={item.label}
                 >
                   {item.label}
                 </motion.button>
               </li>
             ))}
+            
+            {/* Language Toggle */}
+            <li role="none">
+              <FlagButton />
+            </li>
+
             {/* Theme Toggle */}
             <li role="none">
               <motion.button
@@ -134,10 +145,9 @@ const Navbar = () => {
                 className="p-2 rounded-full glass hover:bg-primary/10 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                aria-label={isDark ? "تفعيل الوضع الفاتح" : "تفعيل الوضع الداكن"}
-                aria-pressed={isDark}
+                aria-label={isDark ? content.lightMode : content.darkMode}
               >
-                {isDark ? <Sun className="w-5 h-5 text-primary" aria-hidden="true" /> : <Moon className="w-5 h-5 text-primary" aria-hidden="true" />}
+                {isDark ? <Sun className="w-5 h-5 text-primary" /> : <Moon className="w-5 h-5 text-primary" />}
               </motion.button>
             </li>
 
@@ -147,34 +157,32 @@ const Navbar = () => {
                 className="btn-primary text-sm px-6 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                aria-label="ابدأ مشروعك الآن"
               >
-                ابدأ مشروعك
+                {content.startProject}
               </motion.button>
             </li>
           </ul>
 
           {/* Mobile Menu Button */}
           <div className="lg:hidden flex items-center gap-3">
+            <FlagButton />
             <motion.button
               onClick={toggleTheme}
               className="p-2 rounded-full glass hover:bg-primary/10 transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              aria-label={isDark ? "تفعيل الوضع الفاتح" : "تفعيل الوضع الداكن"}
-              aria-pressed={isDark}
+              aria-label={isDark ? content.lightMode : content.darkMode}
             >
-              {isDark ? <Sun className="w-5 h-5 text-primary" aria-hidden="true" /> : <Moon className="w-5 h-5 text-primary" aria-hidden="true" />}
+              {isDark ? <Sun className="w-5 h-5 text-primary" /> : <Moon className="w-5 h-5 text-primary" />}
             </motion.button>
             <motion.button
               className="text-foreground p-2 focus:outline-none focus:ring-2 focus:ring-primary rounded-md"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               whileTap={{ scale: 0.9 }}
-              aria-label={isMobileMenuOpen ? "إغلاق القائمة" : "فتح القائمة"}
+              aria-label={isMobileMenuOpen ? content.closeMenu : content.openMenu}
               aria-expanded={isMobileMenuOpen}
-              aria-controls="mobile-menu"
             >
-              {isMobileMenuOpen ? <X size={28} aria-hidden="true" /> : <Menu size={28} aria-hidden="true" />}
+              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </motion.button>
           </div>
         </div>
@@ -184,17 +192,16 @@ const Navbar = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.nav
-            id="mobile-menu"
-            initial={{ opacity: 0, x: "100%" }}
+            initial={{ opacity: 0, x: lang === "ar" ? "-100%" : "100%" }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "100%" }}
+            exit={{ opacity: 0, x: lang === "ar" ? "-100%" : "100%" }}
             transition={{ type: "spring", damping: 25 }}
             className="fixed inset-0 z-40 glass flex flex-col items-center justify-center gap-8 lg:hidden"
             role="navigation"
-            aria-label="القائمة المتنقلة"
+            aria-label={content.mobileNav}
           >
             <ul role="menu" className="flex flex-col items-center gap-8">
-              {navItems.map((item, index) => (
+              {content.items.map((item, index) => (
                 <li key={item.href} role="none">
                   <motion.button
                     onClick={() => handleNavClick(item)}
@@ -218,9 +225,8 @@ const Navbar = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.5 }}
-              aria-label="ابدأ مشروعك الآن"
             >
-              ابدأ مشروعك
+              {content.startProject}
             </motion.button>
           </motion.nav>
         )}
