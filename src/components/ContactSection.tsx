@@ -26,6 +26,14 @@ const ContactSection = () => {
       service: formData.service || null, budget: formData.budget || null,
       message: formData.message || "No message",
     });
+    // Send email notification
+    try {
+      await supabase.functions.invoke("send-contact-email", {
+        body: { name: formData.name, email: formData.email, phone: formData.phone, company: formData.company, service: formData.service, budget: formData.budget, message: formData.message },
+      });
+    } catch (err) {
+      console.error("Email notification failed:", err);
+    }
     if (error) {
       toast({ title: c.errorTitle, description: c.errorDesc, variant: "destructive" });
       return;
