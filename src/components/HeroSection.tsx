@@ -10,7 +10,7 @@ const HeroSection = () => {
   const c = heroContent[lang];
 
   return (
-    <section id="home" aria-labelledby="hero-heading" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-grid pt-20 md:pt-0">
+    <section id="home" aria-labelledby="hero-heading" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-grid pt-navbar-fix pt-20 md:pt-0">
       <div className="absolute inset-0" aria-hidden="true">
         <div className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full opacity-20" style={{ background: "radial-gradient(circle, hsl(262, 83%, 58%) 0%, transparent 70%)" }} />
         <div className="absolute bottom-1/4 left-1/4 w-80 h-80 rounded-full opacity-15" style={{ background: "radial-gradient(circle, hsl(187, 94%, 48%) 0%, transparent 70%)" }} />
@@ -23,12 +23,12 @@ const HeroSection = () => {
             <span className="text-sm font-medium text-foreground/80">{c.badge}</span>
           </motion.div>
 
-          <motion.h1 id="hero-heading" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-tight mb-6 md:mb-8">
+          <motion.h1 id="hero-heading" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="hero-title text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-tight mb-6 md:mb-8">
             <span className="block text-foreground">{c.headline1}</span>
             <span className="block gradient-text">{c.headline2}</span>
           </motion.h1>
 
-          <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }} className="text-base sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-8 md:mb-12 leading-relaxed px-2">
+          <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }} className="hero-subtitle text-base sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-8 md:mb-12 leading-relaxed px-2">
             {c.subheadline}
           </motion.p>
 
