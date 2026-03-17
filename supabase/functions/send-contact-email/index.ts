@@ -42,7 +42,7 @@ serve(async (req) => {
       },
       body: JSON.stringify({
         from: "4Creative <onboarding@resend.dev>",
-        to: ["nashaatfathy878@gmail.com"],
+        to: ["nvshvvt@gmail.com"],
         subject: `رسالة جديدة من ${name} - موقع 4Creative`,
         html: htmlContent,
         reply_to: email,
