@@ -93,10 +93,26 @@
     --glass-border: 270 20% 85%;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(262, 83%, 58%) 0%, hsl(187, 94%, 48%) 100%);
-    --gradient-hero: linear-gradient(180deg, hsl(0, 0%, 100%) 0%, hsl(270, 20%, 98%) 100%);
-    --gradient-card: linear-gradient(135deg, hsl(0, 0%, 100%) 0%, hsl(270, 20%, 98%) 100%);
-    --gradient-glow: radial-gradient(ellipse at center, hsla(262, 83%, 58%, 0.15) 0%, transparent 70%);
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(262, 83%, 58%) 0%,
+      hsl(187, 94%, 48%) 100%
+    );
+    --gradient-hero: linear-gradient(
+      180deg,
+      hsl(0, 0%, 100%) 0%,
+      hsl(270, 20%, 98%) 100%
+    );
+    --gradient-card: linear-gradient(
+      135deg,
+      hsl(0, 0%, 100%) 0%,
+      hsl(270, 20%, 98%) 100%
+    );
+    --gradient-glow: radial-gradient(
+      ellipse at center,
+      hsla(262, 83%, 58%, 0.15) 0%,
+      transparent 70%
+    );
 
     /* Shadows */
     --shadow-glow-sm: 0 0 20px hsla(262, 83%, 58%, 0.2);
@@ -144,10 +160,26 @@
     --glass-border: 270 30% 25%;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(262, 83%, 58%) 0%, hsl(187, 94%, 48%) 100%);
-    --gradient-hero: linear-gradient(180deg, hsl(270, 50%, 8%) 0%, hsl(270, 50%, 4%) 100%);
-    --gradient-card: linear-gradient(135deg, hsl(270, 40%, 12%) 0%, hsl(270, 40%, 8%) 100%);
-    --gradient-glow: radial-gradient(ellipse at center, hsla(262, 83%, 58%, 0.3) 0%, transparent 70%);
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(262, 83%, 58%) 0%,
+      hsl(187, 94%, 48%) 100%
+    );
+    --gradient-hero: linear-gradient(
+      180deg,
+      hsl(270, 50%, 8%) 0%,
+      hsl(270, 50%, 4%) 100%
+    );
+    --gradient-card: linear-gradient(
+      135deg,
+      hsl(270, 40%, 12%) 0%,
+      hsl(270, 40%, 8%) 100%
+    );
+    --gradient-glow: radial-gradient(
+      ellipse at center,
+      hsla(262, 83%, 58%, 0.3) 0%,
+      transparent 70%
+    );
 
     /* Shadows */
     --shadow-glow-sm: 0 0 20px hsla(262, 83%, 58%, 0.3);
@@ -172,7 +204,11 @@
   }
 
   .dark body {
-    background: linear-gradient(180deg, hsl(270, 50%, 6%) 0%, hsl(270, 50%, 4%) 100%);
+    background: linear-gradient(
+      180deg,
+      hsl(270, 50%, 6%) 0%,
+      hsl(270, 50%, 4%) 100%
+    );
   }
 
   h1 {
@@ -189,38 +225,60 @@
   /* Glass morphism effect - Light mode */
   .glass {
     @apply backdrop-blur-xl border;
-    background: linear-gradient(135deg, hsla(270, 20%, 100%, 0.8) 0%, hsla(270, 20%, 98%, 0.6) 100%);
+    background: linear-gradient(
+      135deg,
+      hsla(270, 20%, 100%, 0.8) 0%,
+      hsla(270, 20%, 98%, 0.6) 100%
+    );
     border-color: hsla(270, 20%, 80%, 0.4);
   }
 
   .dark .glass {
-    background: linear-gradient(135deg, hsla(270, 40%, 15%, 0.6) 0%, hsla(270, 40%, 10%, 0.4) 100%);
+    background: linear-gradient(
+      135deg,
+      hsla(270, 40%, 15%, 0.6) 0%,
+      hsla(270, 40%, 10%, 0.4) 100%
+    );
     border-color: hsla(270, 30%, 30%, 0.3);
   }
 
   .glass-card {
     @apply backdrop-blur-xl rounded-2xl border transition-all duration-500;
-    background: linear-gradient(135deg, hsla(270, 20%, 100%, 0.9) 0%, hsla(270, 20%, 98%, 0.7) 100%);
+    background: linear-gradient(
+      135deg,
+      hsla(270, 20%, 100%, 0.9) 0%,
+      hsla(270, 20%, 98%, 0.7) 100%
+    );
     border-color: hsla(270, 20%, 85%, 0.3);
   }
 
   .dark .glass-card {
-    background: linear-gradient(135deg, hsla(270, 40%, 15%, 0.5) 0%, hsla(270, 40%, 8%, 0.3) 100%);
+    background: linear-gradient(
+      135deg,
+      hsla(270, 40%, 15%, 0.5) 0%,
+      hsla(270, 40%, 8%, 0.3) 100%
+    );
     border-color: hsla(270, 30%, 30%, 0.2);
   }
 
   .glass-card:hover {
     border-color: hsla(262, 83%, 58%, 0.4);
-    box-shadow: 0 0 40px hsla(262, 83%, 58%, 0.15), inset 0 0 40px hsla(262, 83%, 58%, 0.05);
+    box-shadow:
+      0 0 40px hsla(262, 83%, 58%, 0.15),
+      inset 0 0 40px hsla(262, 83%, 58%, 0.05);
   }
 
   /* Glow effects */
   .glow-text {
-    text-shadow: 0 0 40px hsla(262, 83%, 58%, 0.6), 0 0 80px hsla(262, 83%, 58%, 0.4);
+    text-shadow:
+      0 0 40px hsla(262, 83%, 58%, 0.6),
+      0 0 80px hsla(262, 83%, 58%, 0.4);
   }
 
   .glow-border {
-    box-shadow: 0 0 20px hsla(262, 83%, 58%, 0.3), inset 0 0 20px hsla(262, 83%, 58%, 0.1);
+    box-shadow:
+      0 0 20px hsla(262, 83%, 58%, 0.3),
+      inset 0 0 20px hsla(262, 83%, 58%, 0.1);
   }
 
   .glow-cyan {
@@ -230,17 +288,25 @@
   /* Gradient text */
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(262, 83%, 70%) 0%, hsl(187, 94%, 48%) 100%);
+    background-image: linear-gradient(
+      135deg,
+      hsl(262, 83%, 70%) 0%,
+      hsl(187, 94%, 48%) 100%
+    );
   }
 
   .gradient-text-reverse {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(187, 94%, 48%) 0%, hsl(262, 83%, 70%) 100%);
+    background-image: linear-gradient(
+      135deg,
+      hsl(187, 94%, 48%) 0%,
+      hsl(262, 83%, 70%) 100%
+    );
   }
 
   /* Animated background grid */
   .bg-grid {
-    background-image: 
+    background-image:
       linear-gradient(hsla(262, 83%, 58%, 0.03) 1px, transparent 1px),
       linear-gradient(90deg, hsla(262, 83%, 58%, 0.03) 1px, transparent 1px);
     background-size: 60px 60px;
@@ -249,7 +315,11 @@
   /* Button variants */
   .btn-primary {
     @apply relative px-8 py-4 rounded-xl font-bold text-lg overflow-hidden transition-all duration-300 text-center flex items-center justify-center;
-    background: linear-gradient(135deg, hsl(262, 83%, 58%) 0%, hsl(280, 80%, 50%) 100%);
+    background: linear-gradient(
+      135deg,
+      hsl(262, 83%, 58%) 0%,
+      hsl(280, 80%, 50%) 100%
+    );
     box-shadow: 0 0 30px hsla(262, 83%, 58%, 0.4);
     color: white;
   }
@@ -286,9 +356,13 @@
   }
 
   .service-card::before {
-    content: '';
+    content: "";
     @apply absolute inset-0 opacity-0 transition-opacity duration-500;
-    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), hsla(262, 83%, 58%, 0.15) 0%, transparent 50%);
+    background: radial-gradient(
+      circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      hsla(262, 83%, 58%, 0.15) 0%,
+      transparent 50%
+    );
   }
 
   .service-card:hover::before {
@@ -306,8 +380,13 @@
   }
 
   @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
   }
 
   /* Pulse glow */
@@ -316,8 +395,13 @@
   }
 
   @keyframes pulseGlow {
-    0%, 100% { box-shadow: 0 0 30px hsla(262, 83%, 58%, 0.4); }
-    50% { box-shadow: 0 0 60px hsla(262, 83%, 58%, 0.6); }
+    0%,
+    100% {
+      box-shadow: 0 0 30px hsla(262, 83%, 58%, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 60px hsla(262, 83%, 58%, 0.6);
+    }
   }
 
   /* Particle background */
@@ -327,21 +411,40 @@
 
   .particle {
     @apply absolute rounded-full;
-    background: radial-gradient(circle, hsla(262, 83%, 58%, 0.6) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      hsla(262, 83%, 58%, 0.6) 0%,
+      transparent 70%
+    );
     animation: particleFloat 8s ease-in-out infinite;
   }
 
   @keyframes particleFloat {
-    0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
-    25% { opacity: 0.8; }
-    50% { transform: translateY(-100px) translateX(50px); opacity: 0.5; }
-    75% { opacity: 0.7; }
+    0%,
+    100% {
+      transform: translateY(0) translateX(0);
+      opacity: 0.3;
+    }
+    25% {
+      opacity: 0.8;
+    }
+    50% {
+      transform: translateY(-100px) translateX(50px);
+      opacity: 0.5;
+    }
+    75% {
+      opacity: 0.7;
+    }
   }
 
   /* Timeline */
   .timeline-line {
     @apply absolute h-full w-0.5;
-    background: linear-gradient(180deg, hsl(262, 83%, 58%) 0%, hsl(187, 94%, 48%) 100%);
+    background: linear-gradient(
+      180deg,
+      hsl(262, 83%, 58%) 0%,
+      hsl(187, 94%, 48%) 100%
+    );
   }
 
   .timeline-dot {
@@ -358,15 +461,22 @@
   }
 
   .scroll-indicator::after {
-    content: '';
+    content: "";
     @apply w-1 h-2 rounded-full;
     background: hsl(262, 83%, 58%);
     animation: scrollBounce 2s ease-in-out infinite;
   }
 
   @keyframes scrollBounce {
-    0%, 100% { transform: translateY(0); opacity: 1; }
-    50% { transform: translateY(10px); opacity: 0.3; }
+    0%,
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(10px);
+      opacity: 0.3;
+    }
   }
 
   /* Custom scrollbar */
@@ -379,12 +489,20 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, hsl(262, 83%, 58%) 0%, hsl(280, 80%, 50%) 100%);
+    background: linear-gradient(
+      180deg,
+      hsl(262, 83%, 58%) 0%,
+      hsl(280, 80%, 50%) 100%
+    );
     border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, hsl(262, 83%, 65%) 0%, hsl(280, 80%, 55%) 100%);
+    background: linear-gradient(
+      180deg,
+      hsl(262, 83%, 65%) 0%,
+      hsl(280, 80%, 55%) 100%
+    );
   }
 
   /* Responsive adjustments for short screens like Nest Hub */
@@ -395,15 +513,15 @@
     .hero-subtitle {
       font-size: clamp(1rem, 4vw, 1.5rem) !important;
     }
-      .pt-navbar-fix {
-        padding-top: 70px !important;
-      }
-  }
-    @media (min-height: 701px) {
-      .pt-navbar-fix {
-        padding-top: 0 !important;
-      }
+    .pt-navbar-fix {
+      padding-top: 70px !important;
     }
+  }
+  @media (min-height: 701px) {
+    .pt-navbar-fix {
+      padding-top: 0 !important;
+    }
+  }
 }
 
 @layer utilities {
